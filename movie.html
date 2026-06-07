@@ -7,7 +7,7 @@
 <style>
 
 /* =========================
-   BASE
+   BASE STYLE
 ========================= */
 body {
 margin: 0;
@@ -120,7 +120,7 @@ z-index: 1000;
 }
 
 /* =========================
-   ANIMATION
+   ANIMATIONS
 ========================= */
 @keyframes fadeIn {
 to { opacity: 1; }
@@ -140,7 +140,7 @@ to { opacity: 0; visibility: hidden; }
   <div class="logo">BIRTHDAY ORIGINALS</div>
 </div>
 
-<!-- 🎵 MUSIC (NO AUTOPLAY — FIX BROWSER BLOCK) -->
+<!-- 🎵 MUSIC (YOUR FILE ONLY) -->
 <audio id="bgm" loop>
   <source src="music.mp3?v=2" type="audio/mp3">
 </audio>
@@ -156,7 +156,6 @@ to { opacity: 0; visibility: hidden; }
 <h2>Dewi Rinjani</h2>
 
 <button class="btn" onclick="startFilm()">▶ Start Watching</button>
-
 </div>
 
 <!-- 🎬 VIDEO -->
@@ -186,14 +185,19 @@ allowfullscreen>
 function startFilm() {
 document.getElementById('intro').style.opacity = '0';
 
-/* 🎵 FIX: MUSIC START ONLY AFTER USER CLICK */
 const audio = document.getElementById("bgm");
-audio.volume = 0.6;
-audio.play();
+audio.volume = 0.5;
+
+/* 🎵 PLAY MUSIC ONLY AFTER CLICK */
+audio.play().catch(() => {
+console.log("Autoplay blocked, waiting interaction");
+});
 
 setTimeout(() => {
 document.getElementById('intro').style.display = 'none';
 document.getElementById('videoSection').style.display = 'block';
+
+stopMusic(); // 🎬 stop agar tidak tumpang tindih dengan video
 
 setTimeout(() => {
 document.getElementById('videoSection').style.opacity = '1';
@@ -202,12 +206,11 @@ document.getElementById('videoSection').style.opacity = '1';
 }, 700);
 }
 
-function goMemories() {
-window.location.href = "memories.html";
-}
-
-function goHome() {
-window.location.href = "index.html";
+/* 🛑 STOP MUSIC */
+function stopMusic() {
+const audio = document.getElementById("bgm");
+audio.pause();
+audio.currentTime = 0;
 }
 
 function toggleMusic() {
@@ -218,6 +221,14 @@ audio.play();
 } else {
 audio.pause();
 }
+}
+
+function goMemories() {
+window.location.href = "memories.html";
+}
+
+function goHome() {
+window.location.href = "index.html";
 }
 
 </script>
