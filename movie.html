@@ -20,7 +20,7 @@ overflow: hidden;
 }
 
 /* =========================
-   LOADING
+   LOADING SCREEN
 ========================= */
 #loadingScreen {
 position: fixed;
@@ -66,12 +66,12 @@ color: #bbb;
 margin-top: 10px;
 }
 
-.intro h1 {
+h1 {
 font-size: 42px;
 margin: 10px 0;
 }
 
-.intro h2 {
+h2 {
 font-size: 28px;
 margin-top: 10px;
 }
@@ -92,7 +92,7 @@ transform: scale(1.05);
 }
 
 /* =========================
-   VIDEO
+   VIDEO SECTION
 ========================= */
 .video-section {
 padding: 40px;
@@ -140,13 +140,14 @@ to { opacity: 0; visibility: hidden; }
   <div class="logo">BIRTHDAY ORIGINALS</div>
 </div>
 
-<!-- 🎵 MUSIC (CUSTOM FILE) -->
-<audio id="bgm" autoplay loop>
+<!-- 🎵 MUSIC (NO AUTOPLAY — FIX BROWSER BLOCK) -->
+<audio id="bgm" loop>
   <source src="music.mp3" type="audio/mp3">
 </audio>
 
 <!-- 🎞️ INTRO -->
 <div class="intro" id="intro">
+
 <p class="small">A BIRTHDAY ORIGINAL FILM</p>
 
 <h1>Perjalanan Kita</h1>
@@ -155,6 +156,7 @@ to { opacity: 0; visibility: hidden; }
 <h2>Dewi Rinjani</h2>
 
 <button class="btn" onclick="startFilm()">▶ Start Watching</button>
+
 </div>
 
 <!-- 🎬 VIDEO -->
@@ -176,13 +178,18 @@ allowfullscreen>
 
 </div>
 
-<!-- 🔊 MUSIC CONTROL -->
+<!-- 🔊 MUSIC BUTTON -->
 <button class="btn music-btn" onclick="toggleMusic()">🔊 Music</button>
 
 <script>
 
 function startFilm() {
 document.getElementById('intro').style.opacity = '0';
+
+/* 🎵 FIX: MUSIC START ONLY AFTER USER CLICK */
+const audio = document.getElementById("bgm");
+audio.volume = 0.6;
+audio.play();
 
 setTimeout(() => {
 document.getElementById('intro').style.display = 'none';
@@ -205,7 +212,12 @@ window.location.href = "index.html";
 
 function toggleMusic() {
 const audio = document.getElementById("bgm");
-audio.paused ? audio.play() : audio.pause();
+
+if(audio.paused){
+audio.play();
+} else {
+audio.pause();
+}
 }
 
 </script>
