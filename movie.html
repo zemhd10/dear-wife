@@ -1,41 +1,304 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>BIRTHDAY ORIGINALS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perjalanan Kita</title>
 
 <style>
-
-body {
-margin: 0;
-background: black;
-color: white;
-font-family: Arial, sans-serif;
-overflow: hidden;
-opacity: 0;
-animation: fadeIn 1.2s ease forwards;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-/* BLACK CINEMA LAYER */
-#fade {
-position: fixed;
-width: 100%;
-height: 100vh;
-background: black;
-z-index: 999;
-opacity: 1;
-transition: opacity 1s ease;
+body{
+background:#000;
+color:white;
+font-family:Arial, Helvetica, sans-serif;
+overflow-x:hidden;
 }
 
-/* INTRO */
-.intro {
-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
+/* Loading Screen */
+#loadingScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+animation:hideLoading 2.5s forwards;
 }
 
-.title {
-font-size: 
+.logo{
+color:#e50914;
+font-size:32px;
+font-weight:bold;
+letter-spacing:4px;
+}
+
+@keyframes hideLoading{
+0%,80%{
+opacity:1;
+}
+100%{
+opacity:0;
+visibility:hidden;
+}
+}
+
+/* Intro */
+.intro{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+transition:all .8s ease;
+}
+
+.tag{
+font-size:12px;
+letter-spacing:4px;
+color:#aaa;
+margin-bottom:15px;
+}
+
+.title{
+font-size:60px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.subtitle{
+font-size:20px;
+color:#ccc;
+margin-bottom:25px;
+}
+
+.name{
+font-size:28px;
+color:#e50914;
+margin-bottom:40px;
+}
+
+.btn{
+background:#e50914;
+color:white;
+border:none;
+padding:14px 30px;
+font-size:18px;
+border-radius:6px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* Video Section */
+.video-section{
+display:none;
+opacity:0;
+transition:opacity 1s ease;
+padding:50px 20px;
+text-align:center;
+min-height:100vh;
+}
+
+.video-section h1{
+margin-bottom:10px;
+}
+
+.video-section p{
+color:#bbb;
+margin-bottom:30px;
+}
+
+.video-wrapper{
+display:flex;
+justify-content:center;
+margin-bottom:30px;
+}
+
+iframe{
+width:90%;
+max-width:1000px;
+height:560px;
+border:none;
+border-radius:12px;
+}
+
+/* Navigation */
+.actions{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+/* Fade */
+#fade{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:black;
+opacity:0;
+pointer-events:none;
+transition:opacity .8s ease;
+z-index:9998;
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+.title{
+font-size:42px;
+}
+
+.subtitle{
+font-size:16px;
+}
+
+iframe{
+height:250px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Loading -->
+
+<div id="loadingScreen">
+<div class="logo">BIRTHDAY ORIGINALS</div>
+</div>
+
+<!-- Fade Layer -->
+
+<div id="fade"></div>
+
+<!-- Intro -->
+
+<div class="intro" id="intro">
+
+<div class="tag">
+A BIRTHDAY ORIGINAL FILM
+</div>
+
+<div class="title">
+Perjalanan Kita
+</div>
+
+<div class="subtitle">
+A story of love, memories, and the beautiful moments we've shared.
+</div>
+
+<div class="name">
+For Dewi Rinjani ❤️
+</div>
+
+<button class="btn" onclick="startFilm()">
+▶ Start Watching
+</button>
+
+</div>
+
+<!-- Movie -->
+
+<div class="video-section" id="videoSection">
+
+<h1>Chapter 1 — Our Story</h1>
+
+<p>
+Every memory has led us to this moment.
+</p>
+
+<div class="video-wrapper">
+
+<iframe
+src="https://drive.google.com/file/d/1xCSRGZl7J3Wl0JNFsg2zxpvGWsFV9ZWE/preview"
+allow="autoplay"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<div class="actions">
+
+<button class="btn" onclick="goMemories()">
+💖 Lihat Kenangan
+</button>
+
+<button class="btn" onclick="goHome()">
+🏠 Kembali
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function startFilm(){
+
+const intro=document.getElementById('intro');
+const video=document.getElementById('videoSection');
+
+intro.style.opacity='0';
+
+setTimeout(()=>{
+
+intro.style.display='none';
+
+video.style.display='block';
+
+setTimeout(()=>{
+video.style.opacity='1';
+},100);
+
+},700);
+
+}
+
+function goMemories(){
+
+const fade=document.getElementById('fade');
+
+fade.style.opacity='1';
+
+setTimeout(()=>{
+window.location.href='memories.html';
+},800);
+
+}
+
+function goHome(){
+
+const fade=document.getElementById('fade');
+
+fade.style.opacity='1';
+
+setTimeout(()=>{
+window.location.href='index.html';
+},800);
+
+}
+
+</script>
+
+</body>
+</html>
