@@ -2,11 +2,14 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Perjalanan Kita</title>
+<title>BIRTHDAY ORIGINALS - Perjalanan Kita</title>
 
 <style>
 
-/* FADE IN PAGE */
+/* =========================
+   BASE CINEMATIC STYLE
+========================= */
+
 body {
 margin: 0;
 background: radial-gradient(circle at center, #111 0%, #000 100%);
@@ -14,6 +17,7 @@ color: white;
 font-family: Arial, sans-serif;
 opacity: 0;
 animation: fadeIn 1.2s ease forwards;
+overflow-x: hidden;
 }
 
 /* TEXT GLOW */
@@ -21,67 +25,11 @@ h1, h2 {
 text-shadow: 0 0 10px rgba(255,0,0,0.6);
 }
 
-/* INTRO ANIMATION */
-.intro {
-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-animation: zoomFade 1.5s ease;
-}
+/* =========================
+   LOADING SCREEN
+========================= */
 
-/* VIDEO SECTION */
-.video-section {
-padding: 40px;
-text-align: center;
-display: none;
-}
-
-video, iframe {
-width: 80%;
-max-width: 900px;
-border-radius: 10px;
-}
-
-/* BUTTON */
-.btn {
-margin-top: 20px;
-padding: 12px 25px;
-background: red;
-border: none;
-color: white;
-cursor: pointer;
-font-size: 16px;
-}
-
-/* ANIMATIONS */
-@keyframes fadeIn {
-to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-to { opacity: 0; }
-}
-
-@keyframes zoomFade {
-from {
-transform: scale(1.1);
-opacity: 0;
-}
-to {
-transform: scale(1);
-opacity: 1;
-}
-}
-
-/* OPTIONAL FADE OUT CLASS */
-.fade-out {
-animation: fadeOut 0.8s ease forwards;
-}
-
-  #loadingScreen {
+#loadingScreen {
 position: fixed;
 width: 100%;
 height: 100vh;
@@ -101,41 +49,138 @@ letter-spacing: 4px;
 text-shadow: 0 0 20px red;
 }
 
+/* =========================
+   INTRO SECTION
+========================= */
+
+.intro {
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+transition: 0.8s ease;
+}
+
+.small {
+color: #aaa;
+letter-spacing: 3px;
+font-size: 12px;
+}
+
+.subtitle {
+color: #bbb;
+margin-top: 10px;
+}
+
+.intro h1 {
+font-size: 42px;
+margin: 10px 0;
+color: white;
+}
+
+.intro h2 {
+font-size: 28px;
+color: white;
+margin-top: 10px;
+}
+
+/* =========================
+   VIDEO SECTION
+========================= */
+
+.video-section {
+padding: 40px;
+text-align: center;
+display: none;
+opacity: 0;
+transition: 1.2s ease;
+}
+
+iframe {
+width: 80%;
+max-width: 900px;
+height: 500px;
+border-radius: 10px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn {
+margin-top: 20px;
+padding: 12px 25px;
+background: red;
+border: none;
+color: white;
+cursor: pointer;
+font-size: 16px;
+transition: 0.3s;
+}
+
+.btn:hover {
+transform: scale(1.05);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn {
+to { opacity: 1; }
+}
+
 @keyframes fadeOutLoad {
 to {
 opacity: 0;
 visibility: hidden;
 }
 }
+
 </style>
 
 </head>
 
 <body>
+
+<!-- =========================
+     LOADING SCREEN
+========================= -->
 <div id="loadingScreen">
   <div class="logo">BIRTHDAY ORIGINALS</div>
 </div>
-<!-- INTRO -->
+
+<!-- =========================
+     INTRO
+========================= -->
 <div class="intro" id="intro">
-<h1>BIRTHDAY ORIGINALS</h1>
-<p>A Special Film For</p>
+
+<p class="small">A BIRTHDAY ORIGINAL FILM</p>
+
+<h1>Perjalanan Kita</h1>
+
+<p class="subtitle">A story of love, time, and us</p>
+
 <h2>Dewi Rinjani</h2>
-<p style="margin-top:30px;">Perjalanan Kita</p>
 
 <button class="btn" onclick="startFilm()">▶ Start Watching</button>
+
 </div>
 
-<!-- VIDEO -->
+<!-- =========================
+     VIDEO SECTION
+========================= -->
 <div class="video-section" id="videoSection">
 
-<h2>Perjalanan Kita</h2>
+<h1>Perjalanan Kita</h1>
 <p>A Birthday Story of Love, Time, and Us</p>
 
 <iframe 
-  src="https://drive.google.com/file/d/1xCSRGZl7J3Wl0JNFsg2zxpvGWsFV9ZWE/preview"
-  height="500"
-  allow="autoplay"
-  allowfullscreen>
+src="https://drive.google.com/file/d/1xCSRGZl7J3Wl0JNFsg2zxpvGWsFV9ZWE/preview"
+allow="autoplay"
+allowfullscreen>
 </iframe>
 
 <br>
@@ -145,10 +190,23 @@ visibility: hidden;
 
 </div>
 
+<!-- =========================
+     SCRIPT
+========================= -->
 <script>
+
 function startFilm() {
+document.getElementById('intro').style.opacity = '0';
+
+setTimeout(() => {
 document.getElementById('intro').style.display = 'none';
 document.getElementById('videoSection').style.display = 'block';
+
+setTimeout(() => {
+document.getElementById('videoSection').style.opacity = '1';
+}, 100);
+
+}, 700);
 }
 
 function goMemories() {
@@ -158,6 +216,7 @@ window.location.href = "memories.html";
 function goHome() {
 window.location.href = "index.html";
 }
+
 </script>
 
 </body>
