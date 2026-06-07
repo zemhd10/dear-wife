@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Originals - Perjalanan Kita</title>
+<title>Birthday Originals</title>
 
 <style>
 
@@ -17,26 +16,15 @@ box-sizing:border-box;
 body{
 font-family:Arial, sans-serif;
 background:#000;
-color:#fff;
+color:white;
 overflow:hidden;
 }
 
-/* FADE LAYER */
-#fade{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100vh;
-background:#000;
-z-index:9999;
-opacity:0;
-pointer-events:none;
-transition:opacity 0.8s ease;
-}
+/* =========================
+LOADING SCREEN
+========================= */
 
-/* LOADING */
-.loading{
+#loading{
 position:fixed;
 top:0;
 left:0;
@@ -46,164 +34,290 @@ background:#000;
 display:flex;
 justify-content:center;
 align-items:center;
-z-index:999;
-animation:hideLoading 2s forwards;
+z-index:9999;
+animation:loadingOut 3s forwards;
+animation-delay:1.5s;
 }
 
-.loading h1{
-color:red;
-letter-spacing:4px;
+#loading h1{
+color:#e50914;
+font-size:42px;
+letter-spacing:6px;
+text-shadow:0 0 20px rgba(229,9,20,.7);
 }
 
-@keyframes hideLoading{
-80%{
-opacity:1;
-}
-100%{
+@keyframes loadingOut{
+to{
 opacity:0;
 visibility:hidden;
 }
 }
 
-/* INTRO */
-.intro{
+/* =========================
+BACKGROUND
+========================= */
+
+.hero-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+linear-gradient(
+to right,
+rgba(0,0,0,.92) 25%,
+rgba(0,0,0,.65) 60%,
+rgba(0,0,0,.4) 100%
+),
+url('dewi.jpg');
+
+background-size:cover;
+background-position:center;
+animation:zoomBg 20s ease-in-out infinite alternate;
+}
+
+@keyframes zoomBg{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.08);
+}
+}
+
+/* =========================
+INTRO
+========================= */
+
+#intro{
+position:relative;
+z-index:10;
 height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-transition:0.8s;
+padding-left:80px;
+max-width:700px;
 }
 
 .tag{
+letter-spacing:4px;
 font-size:12px;
-letter-spacing:3px;
+color:#bdbdbd;
+margin-bottom:15px;
+opacity:0;
+animation:fadeUp 1s forwards;
+animation-delay:2s;
+}
+
+.title{
+font-size:72px;
+font-weight:bold;
+line-height:1.05;
+text-shadow:0 0 30px rgba(255,255,255,.15);
+opacity:0;
+animation:fadeUp 1s forwards;
+animation-delay:2.5s;
+}
+
+.subtitle{
+margin-top:20px;
+font-size:20px;
+line-height:1.7;
+color:#d5d5d5;
+opacity:0;
+animation:fadeUp 1s forwards;
+animation-delay:3s;
+}
+
+.name{
+margin-top:25px;
+font-size:28px;
+color:#ff6b6b;
+opacity:0;
+animation:fadeUp 1s forwards;
+animation-delay:3.5s;
+}
+
+.play-btn{
+margin-top:35px;
+padding:16px 32px;
+font-size:18px;
+border:none;
+border-radius:6px;
+background:#e50914;
+color:white;
+cursor:pointer;
+width:220px;
+opacity:0;
+animation:fadeUp 1s forwards;
+animation-delay:4s;
+transition:.3s;
+}
+
+.play-btn:hover{
+transform:scale(1.05);
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* =========================
+BLACK TRANSITION
+========================= */
+
+#fade{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+z-index:9998;
+opacity:0;
+pointer-events:none;
+transition:1s;
+}
+
+/* =========================
+CHAPTER
+========================= */
+
+#chapter{
+display:none;
+position:absolute;
+width:100%;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:black;
+z-index:100;
+text-align:center;
+}
+
+.chapter-small{
+letter-spacing:6px;
 color:#aaa;
 margin-bottom:15px;
 }
 
-.title{
-font-size:56px;
-font-weight:bold;
-margin-bottom:10px;
+.chapter-title{
+font-size:60px;
 }
 
-.subtitle{
-color:#ccc;
-max-width:700px;
-line-height:1.6;
-margin-bottom:20px;
-}
+/* =========================
+VIDEO
+========================= */
 
-.name{
-font-size:26px;
-color:#ff4d4d;
-margin-bottom:30px;
-}
-
-.btn{
-background:red;
-color:white;
-border:none;
-padding:14px 28px;
-font-size:16px;
-cursor:pointer;
-border-radius:4px;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
-}
-
-/* VIDEO SECTION */
-.video-section{
+#videoSection{
 display:none;
+position:absolute;
+width:100%;
 height:100vh;
-padding:40px;
+background:black;
+padding-top:40px;
 text-align:center;
-opacity:0;
-transition:1s;
-}
-
-.video-section h1{
-margin-bottom:10px;
-}
-
-.video-section p{
-color:#aaa;
-margin-bottom:20px;
-}
-
-.video-wrapper{
-display:flex;
-justify-content:center;
 }
 
 iframe{
 width:85%;
-max-width:1000px;
-height:550px;
+max-width:1100px;
+height:620px;
 border:none;
 border-radius:12px;
 }
 
-.action{
-margin-top:25px;
-display:flex;
-gap:15px;
-justify-content:center;
-flex-wrap:wrap;
+.video-title{
+margin-bottom:15px;
+font-size:36px;
+}
+
+.buttons{
+margin-top:20px;
+}
+
+.btn{
+padding:14px 26px;
+margin:0 8px;
+background:#e50914;
+border:none;
+color:white;
+cursor:pointer;
+border-radius:5px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="loading">
+<!-- Loading -->
+<div id="loading">
 <h1>BIRTHDAY ORIGINALS</h1>
 </div>
 
+<!-- Background -->
+<div class="hero-bg"></div>
+
+<!-- Fade Layer -->
 <div id="fade"></div>
 
-<!-- INTRO -->
+<!-- Intro -->
+<div id="intro">
 
-<div class="intro" id="intro">
-
-<div class="tag">A BIRTHDAY ORIGINAL FILM</div>
-
-<h1 class="title">A Film for Your Special Day</h1>
-
-<p class="subtitle">
-A personal story captured to celebrate one meaningful birthday,
-filled with memories, laughter, and love.
-</p>
-
-<div class="name">
-For Dewi Rinjani ❤️
+<div class="tag">
+A BIRTHDAY ORIGINAL FILM
 </div>
 
-<button class="btn" onclick="startFilm()">
-▶ Start Watching
+<div class="title">
+Happy Birthday,<br>
+Dewi Rinjani
+</div>
+
+<div class="subtitle">
+A collection of memories, laughter,
+love, and moments that made this year beautiful.
+</div>
+
+<div class="name">
+Made with Love ❤️
+</div>
+
+<button class="play-btn" onclick="startFilm()">
+▶ Begin The Story
 </button>
 
 </div>
 
-<!-- VIDEO -->
+<!-- Chapter -->
+<div id="chapter">
 
-<div class="video-section" id="videoSection">
+<div class="chapter-small">
+CHAPTER 1
+</div>
 
-<h1>Chapter 1 — Perjalanan Kita</h1>
+<div class="chapter-title">
+Perjalanan Kita
+</div>
 
-<p>
-A Birthday Story of Love, Time, and Us
-</p>
+</div>
 
-<div class="video-wrapper">
+<!-- Video -->
+<div id="videoSection">
+
+<div class="video-title">
+Perjalanan Kita
+</div>
 
 <iframe
 src="https://drive.google.com/file/d/1xCSRGZl7J3Wl0JNFsg2zxpvGWsFV9ZWE/preview"
@@ -211,16 +325,16 @@ allow="autoplay"
 allowfullscreen>
 </iframe>
 
-</div>
+<div class="buttons">
 
-<div class="action">
-
-<button class="btn" onclick="goMemories()">
+<button class="btn"
+onclick="location.href='memories.html'">
 💖 Lihat Kenangan
 </button>
 
-<button class="btn" onclick="goHome()">
-🏠 Kembali
+<button class="btn"
+onclick="location.href='index.html'">
+🏠 Home
 </button>
 
 </div>
@@ -231,46 +345,33 @@ allowfullscreen>
 
 function startFilm(){
 
-const intro = document.getElementById("intro");
-const video = document.getElementById("videoSection");
+document.getElementById("fade").style.opacity="1";
 
-intro.style.opacity = "0";
+setTimeout(()=>{
 
-setTimeout(() => {
+document.getElementById("intro").style.display="none";
 
-intro.style.display = "none";
+document.getElementById("chapter").style.display="flex";
 
-video.style.display = "block";
+document.getElementById("fade").style.opacity="0";
 
-setTimeout(() => {
-video.style.opacity = "1";
-},100);
+},1000);
 
-},800);
+setTimeout(()=>{
 
-}
+document.getElementById("fade").style.opacity="1";
 
-function goMemories(){
+},3500);
 
-const fade = document.getElementById("fade");
+setTimeout(()=>{
 
-fade.style.opacity = "1";
+document.getElementById("chapter").style.display="none";
 
-setTimeout(() => {
-window.location.href = "memories.html";
-},800);
+document.getElementById("videoSection").style.display="block";
 
-}
+document.getElementById("fade").style.opacity="0";
 
-function goHome(){
-
-const fade = document.getElementById("fade");
-
-fade.style.opacity = "1";
-
-setTimeout(() => {
-window.location.href = "index.html";
-},800);
+},4500);
 
 }
 
