@@ -8,12 +8,12 @@
 
 body {
 margin: 0;
-background: radial-gradient(circle at center, #111 0%, #000 100%);
+background: black;
 color: white;
 font-family: Arial, sans-serif;
+overflow: hidden;
 opacity: 0;
 animation: fadeIn 1s ease forwards;
-overflow: hidden;
 }
 
 /* LOADING */
@@ -26,7 +26,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 z-index: 999;
-animation: fadeOutLoad 2.2s ease forwards;
+animation: fadeOutLoad 2s ease forwards;
 animation-delay: 1.2s;
 }
 
@@ -34,7 +34,6 @@ animation-delay: 1.2s;
 color: red;
 font-size: 28px;
 letter-spacing: 4px;
-text-shadow: 0 0 20px red;
 }
 
 /* INTRO */
@@ -48,17 +47,6 @@ text-align: center;
 transition: opacity 0.8s ease;
 }
 
-.small {
-color: #aaa;
-letter-spacing: 3px;
-font-size: 12px;
-}
-
-.subtitle {
-color: #bbb;
-margin-top: 10px;
-}
-
 h1 {
 font-size: 42px;
 margin: 10px 0;
@@ -66,7 +54,6 @@ margin: 10px 0;
 
 h2 {
 font-size: 28px;
-margin-top: 10px;
 }
 
 .btn {
@@ -76,34 +63,41 @@ background: red;
 border: none;
 color: white;
 cursor: pointer;
-font-size: 16px;
-transition: 0.3s;
-}
-
-.btn:hover {
-transform: scale(1.05);
 }
 
 /* VIDEO */
 .video-section {
-padding: 40px;
-text-align: center;
+position: absolute;
+width: 100%;
+height: 100%;
 display: none;
 opacity: 0;
 transition: opacity 1s ease;
+text-align: center;
+padding-top: 60px;
 }
 
 iframe {
 width: 80%;
-max-width: 900px;
 height: 500px;
-border-radius: 10px;
 border: none;
+border-radius: 10px;
 }
 
-/* ANIMATION */
+/* CINEMATIC BLACK FADE */
+#fade {
+position: fixed;
+width: 100%;
+height: 100vh;
+background: black;
+z-index: 2000;
+opacity: 0;
+pointer-events: none;
+transition: opacity 1s ease;
+}
+
+/* ANIMATIONS */
 @keyframes fadeIn {
-from { opacity: 0; }
 to { opacity: 1; }
 }
 
@@ -116,19 +110,17 @@ to { opacity: 0; visibility: hidden; }
 
 <body>
 
-<!-- LOADING -->
 <div id="loadingScreen">
   <div class="logo">BIRTHDAY ORIGINALS</div>
 </div>
 
+<!-- BLACK FADE LAYER -->
+<div id="fade"></div>
+
 <!-- INTRO -->
 <div class="intro" id="intro">
 
-<p class="small">A BIRTHDAY ORIGINAL FILM</p>
-
 <h1>Perjalanan Kita</h1>
-<p class="subtitle">A story of love, time, and us</p>
-
 <h2>Dewi Rinjani</h2>
 
 <button class="btn" onclick="startFilm()">▶ Start Watching</button>
@@ -138,20 +130,17 @@ to { opacity: 0; visibility: hidden; }
 <!-- VIDEO -->
 <div class="video-section" id="videoSection">
 
-<h1>Perjalanan Kita</h1>
-<p>A Birthday Story of Love</p>
+<h1>Chapter 1 — Our Story</h1>
 
 <iframe 
-id="videoFrame"
 src="https://drive.google.com/file/d/1xCSRGZl7J3Wl0JNFsg2zxpvGWsFV9ZWE/preview"
 allow="autoplay"
 allowfullscreen>
 </iframe>
 
-<br>
+<br><br>
 
-<button class="btn" onclick="goMemories()">Lihat Kenangan</button>
-<button class="btn" onclick="goHome()">Kembali</button>
+<button class="btn" onclick="toMemories()">Next → Memories</button>
 
 </div>
 
@@ -159,27 +148,30 @@ allowfullscreen>
 
 function startFilm() {
 const intro = document.getElementById('intro');
-const video = document.getElementById('videoSection');
+const fade = document.getElementById('fade');
 
-intro.style.opacity = '0';
+fade.style.opacity = 1; // black screen
 
 setTimeout(() => {
 intro.style.display = 'none';
-video.style.display = 'block';
+document.getElementById('videoSection').style.display = 'block';
 
 setTimeout(() => {
-video.style.opacity = '1';
-}, 50);
+document.getElementById('videoSection').style.opacity = '1';
+fade.style.opacity = 0;
+}, 800);
 
-}, 600);
+}, 800);
 }
 
-function goMemories() {
+function toMemories() {
+const fade = document.getElementById('fade');
+
+fade.style.opacity = 1;
+
+setTimeout(() => {
 window.location.href = "memories.html";
-}
-
-function goHome() {
-window.location.href = "index.html";
+}, 900);
 }
 
 </script>
