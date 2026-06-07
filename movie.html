@@ -10,6 +10,8 @@ margin: 0;
 background: radial-gradient(circle at center, #111 0%, #000 100%;
 color: white;
 font-family: Arial, sans-serif;
+  h1, h2 {
+text-shadow: 0 0 10px rgba(255,0,0,0.6);
 }
 
 /* CINEMATIC INTRO */
@@ -20,6 +22,16 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 text-align: center;
+  animation: zoomFade 1.5s ease;
+  @keyframes zoomFade {
+from {
+transform: scale(1.1);
+opacity: 0;
+}
+to {
+transform: scale(1);
+opacity: 1;
+}
 }
 
 .intro h1 {
