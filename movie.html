@@ -5,16 +5,23 @@
 <title>Perjalanan Kita</title>
 
 <style>
+
+/* FADE IN PAGE */
 body {
 margin: 0;
-background: radial-gradient(circle at center, #111 0%, #000 100%;
+background: radial-gradient(circle at center, #111 0%, #000 100%);
 color: white;
 font-family: Arial, sans-serif;
-  h1, h2 {
+opacity: 0;
+animation: fadeIn 1.2s ease forwards;
+}
+
+/* TEXT GLOW */
+h1, h2 {
 text-shadow: 0 0 10px rgba(255,0,0,0.6);
 }
 
-/* CINEMATIC INTRO */
+/* INTRO ANIMATION */
 .intro {
 height: 100vh;
 display: flex;
@@ -22,27 +29,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 text-align: center;
-  animation: zoomFade 1.5s ease;
-  @keyframes zoomFade {
-from {
-transform: scale(1.1);
-opacity: 0;
-}
-to {
-transform: scale(1);
-opacity: 1;
-}
-}
-
-.intro h1 {
-font-size: 40px;
-letter-spacing: 3px;
-color: red;
-}
-
-.intro p {
-color: #ccc;
-margin-top: 10px;
+animation: zoomFade 1.5s ease;
 }
 
 /* VIDEO SECTION */
@@ -52,7 +39,7 @@ text-align: center;
 display: none;
 }
 
-video {
+video, iframe {
 width: 80%;
 max-width: 900px;
 border-radius: 10px;
@@ -68,30 +55,34 @@ color: white;
 cursor: pointer;
 font-size: 16px;
 }
-</style>
 
-  <style>
-body {
-opacity: 0;
-animation: fadeIn 1.2s ease forwards;
+/* ANIMATIONS */
+@keyframes fadeIn {
+to { opacity: 1; }
 }
 
-@keyframes fadeIn {
+@keyframes fadeOut {
+to { opacity: 0; }
+}
+
+@keyframes zoomFade {
+from {
+transform: scale(1.1);
+opacity: 0;
+}
 to {
+transform: scale(1);
 opacity: 1;
 }
 }
 
+/* OPTIONAL FADE OUT CLASS */
 .fade-out {
 animation: fadeOut 0.8s ease forwards;
 }
 
-@keyframes fadeOut {
-to {
-opacity: 0;
-}
-}
 </style>
+
 </head>
 
 <body>
@@ -114,7 +105,6 @@ opacity: 0;
 
 <iframe 
   src="https://drive.google.com/file/d/1xCSRGZl7J3Wl0JNFsg2zxpvGWsFV9ZWE/preview"
-  width="80%" 
   height="500"
   allow="autoplay"
   allowfullscreen>
