@@ -12,130 +12,41 @@ background: black;
 color: white;
 font-family: Arial, sans-serif;
 opacity: 0;
-animation: fadeIn 1.2s ease forwards;
+animation: fadeIn 1.5s ease forwards;
 }
 
-/* HEADER */
-.header {
+/* BLACK INTRO */
+.intro {
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
 text-align: center;
-padding: 80px 20px 40px;
 }
 
-.header h1 {
-color: red;
-font-size: 42px;
+h1 {
+font-size: 40px;
 }
 
-/* SLIDESHOW */
-.slideshow {
-text-align: center;
-padding: 20px;
+p {
+color: #aaa;
 }
 
-.slideshow img {
-width: 80%;
-max-width: 700px;
-border-radius: 15px;
-transition: opacity 0.8s ease;
-box-shadow: 0 0 25px rgba(255,0,0,0.3);
-}
-
-/* LOVE TEXT */
-.love {
-text-align: center;
-padding: 40px;
-}
-
-/* LETTER */
-.letter {
-text-align: center;
-padding: 60px;
-max-width: 700px;
-margin: auto;
-color: #ddd;
-}
-
-/* ANIMATION */
+/* FADE */
 @keyframes fadeIn {
 to { opacity: 1; }
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- 🎵 MUSIC -->
-<audio id="bgm" autoplay loop>
- <source src="music.mp3?v=2" type="audio/mp3">
-</audio>
-
-<div class="header">
+<div class="intro">
 <h1>Our Memories</h1>
-<p>Every moment becomes a memory worth keeping</p>
+<p>Every moment we built together</p>
 </div>
-
-<!-- 📸 SLIDESHOW -->
-<div class="slideshow">
-<img id="slideImg" src="https://via.placeholder.com/800x400?text=Memory+1">
-</div>
-
-<!-- ❤️ LOVE SECTION -->
-<div class="love">
-<h2>Why I Love You</h2>
-<p>❤️ Karena kamu selalu ada</p>
-<p>❤️ Karena kamu rumah terbaikku</p>
-<p>❤️ Karena kamu memilihku setiap hari</p>
-</div>
-
-<!-- 💌 LETTER -->
-<div class="letter">
-<p id="typeText"></p>
-</div>
-
-<script>
-
-/* SLIDESHOW */
-const images = [
-"https://via.placeholder.com/800x400?text=Memory+1",
-"https://via.placeholder.com/800x400?text=Memory+2",
-"https://via.placeholder.com/800x400?text=Memory+3",
-"https://via.placeholder.com/800x400?text=Memory+4"
-];
-
-let i = 0;
-
-setInterval(() => {
-i++;
-if(i >= images.length) i = 0;
-
-document.getElementById("slideImg").style.opacity = 0;
-
-setTimeout(() => {
-document.getElementById("slideImg").src = images[i];
-document.getElementById("slideImg").style.opacity = 1;
-}, 500);
-
-}, 3000);
-
-
-/* TYPEWRITER */
-const text = "Dewi Rinjani, terima kasih sudah menjadi bagian terbaik dalam hidupku. Selamat ulang tahun cintaku ❤️";
-
-let j = 0;
-
-function typeWriter() {
-if (j < text.length) {
-document.getElementById("typeText").innerHTML += text.charAt(j);
-j++;
-setTimeout(typeWriter, 50);
-}
-}
-
-window.onload = typeWriter;
-
-</script>
 
 </body>
 </html>
