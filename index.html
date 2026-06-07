@@ -13,7 +13,48 @@ color: white;
 font-family: Arial, sans-serif;
 overflow: hidden;
 }
+/* BACKGROUND PHOTO */
+.background {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url('dewi.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+z-index: -2;
 
+/* efek zoom pelan */
+animation: zoomBackground 20s ease-in-out infinite alternate;
+}
+
+/* OVERLAY GELAP */
+.background-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background:
+linear-gradient(
+to right,
+rgba(0,0,0,0.85) 15%,
+rgba(0,0,0,0.55) 50%,
+rgba(0,0,0,0.75) 100%
+);
+z-index: -1;
+}
+
+@keyframes zoomBackground {
+from {
+transform: scale(1);
+}
+to {
+transform: scale(1.08);
+}
+}
 /* NAVBAR */
 .navbar {
 position: fixed;
@@ -115,7 +156,8 @@ transition: opacity 1s ease;
 </head>
 
 <body>
-
+<div class="background"></div>
+<div class="background-overlay"></div>
 <!-- NAVBAR -->
 <div class="navbar">
 <div class="logo">NETFLIX</div>
