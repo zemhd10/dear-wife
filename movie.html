@@ -100,14 +100,6 @@ height: 500px;
 border-radius: 10px;
 }
 
-/* MUSIC BUTTON */
-.music-btn {
-position: fixed;
-bottom: 20px;
-right: 20px;
-z-index: 1000;
-}
-
 /* ANIMATION */
 @keyframes fadeIn {
 to { opacity: 1; }
@@ -161,19 +153,10 @@ allowfullscreen>
 
 </div>
 
-<!-- MUSIC BUTTON -->
-<button class="btn music-btn" onclick="toggleMusic()">🔊 Music</button>
-
 <script>
 
 function startFilm() {
 document.getElementById('intro').style.opacity = '0';
-
-const audio = document.getElementById("bgm");
-audio.volume = 0.5;
-
-/* 🎵 START MUSIC */
-audio.play().catch(() => {});
 
 setTimeout(() => {
 document.getElementById('intro').style.display = 'none';
@@ -186,33 +169,11 @@ document.getElementById('videoSection').style.opacity = '1';
 }, 700);
 }
 
-/* 🛑 STOP MUSIC WHEN ENTERING VIDEO */
-function stopMusic() {
-const audio = document.getElementById("bgm");
-audio.pause();
-audio.currentTime = 0;
-}
-
-/* OPTIONAL: pause music when clicking video area */
-document.getElementById?.("videoFrame");
-
-function toggleMusic() {
-const audio = document.getElementById("bgm");
-
-if(audio.paused){
-audio.play();
-} else {
-audio.pause();
-}
-}
-
 function goMemories() {
-stopMusic();
 window.location.href = "memories.html";
 }
 
 function goHome() {
-stopMusic();
 window.location.href = "index.html";
 }
 
