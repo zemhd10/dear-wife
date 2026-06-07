@@ -4,9 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perjalanan Kita</title>
+<title>Birthday Originals - Perjalanan Kita</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -14,14 +15,28 @@ box-sizing:border-box;
 }
 
 body{
+font-family:Arial, sans-serif;
 background:#000;
-color:white;
-font-family:Arial, Helvetica, sans-serif;
-overflow-x:hidden;
+color:#fff;
+overflow:hidden;
 }
 
-/* Loading Screen */
-#loadingScreen{
+/* FADE LAYER */
+#fade{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:#000;
+z-index:9999;
+opacity:0;
+pointer-events:none;
+transition:opacity 0.8s ease;
+}
+
+/* LOADING */
+.loading{
 position:fixed;
 top:0;
 left:0;
@@ -31,19 +46,17 @@ background:#000;
 display:flex;
 justify-content:center;
 align-items:center;
-z-index:9999;
-animation:hideLoading 2.5s forwards;
+z-index:999;
+animation:hideLoading 2s forwards;
 }
 
-.logo{
-color:#e50914;
-font-size:32px;
-font-weight:bold;
+.loading h1{
+color:red;
 letter-spacing:4px;
 }
 
 @keyframes hideLoading{
-0%,80%{
+80%{
 opacity:1;
 }
 100%{
@@ -52,7 +65,7 @@ visibility:hidden;
 }
 }
 
-/* Intro */
+/* INTRO */
 .intro{
 height:100vh;
 display:flex;
@@ -61,57 +74,58 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
-transition:all .8s ease;
+transition:0.8s;
 }
 
 .tag{
 font-size:12px;
-letter-spacing:4px;
+letter-spacing:3px;
 color:#aaa;
 margin-bottom:15px;
 }
 
 .title{
-font-size:60px;
+font-size:56px;
 font-weight:bold;
 margin-bottom:10px;
 }
 
 .subtitle{
-font-size:20px;
 color:#ccc;
-margin-bottom:25px;
+max-width:700px;
+line-height:1.6;
+margin-bottom:20px;
 }
 
 .name{
-font-size:28px;
-color:#e50914;
-margin-bottom:40px;
+font-size:26px;
+color:#ff4d4d;
+margin-bottom:30px;
 }
 
 .btn{
-background:#e50914;
+background:red;
 color:white;
 border:none;
-padding:14px 30px;
-font-size:18px;
-border-radius:6px;
+padding:14px 28px;
+font-size:16px;
 cursor:pointer;
-transition:.3s;
+border-radius:4px;
+transition:0.3s;
 }
 
 .btn:hover{
 transform:scale(1.05);
 }
 
-/* Video Section */
+/* VIDEO SECTION */
 .video-section{
 display:none;
-opacity:0;
-transition:opacity 1s ease;
-padding:50px 20px;
+height:100vh;
+padding:40px;
 text-align:center;
-min-height:100vh;
+opacity:0;
+transition:1s;
 }
 
 .video-section h1{
@@ -119,93 +133,55 @@ margin-bottom:10px;
 }
 
 .video-section p{
-color:#bbb;
-margin-bottom:30px;
+color:#aaa;
+margin-bottom:20px;
 }
 
 .video-wrapper{
 display:flex;
 justify-content:center;
-margin-bottom:30px;
 }
 
 iframe{
-width:90%;
+width:85%;
 max-width:1000px;
-height:560px;
+height:550px;
 border:none;
 border-radius:12px;
 }
 
-/* Navigation */
-.actions{
+.action{
+margin-top:25px;
 display:flex;
-justify-content:center;
 gap:15px;
+justify-content:center;
 flex-wrap:wrap;
 }
 
-/* Fade */
-#fade{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100vh;
-background:black;
-opacity:0;
-pointer-events:none;
-transition:opacity .8s ease;
-z-index:9998;
-}
-
-/* Mobile */
-@media(max-width:768px){
-
-.title{
-font-size:42px;
-}
-
-.subtitle{
-font-size:16px;
-}
-
-iframe{
-height:250px;
-}
-
-}
 </style>
 
 </head>
 
 <body>
 
-<!-- Loading -->
-
-<div id="loadingScreen">
-<div class="logo">BIRTHDAY ORIGINALS</div>
+<div class="loading">
+<h1>BIRTHDAY ORIGINALS</h1>
 </div>
-
-<!-- Fade Layer -->
 
 <div id="fade"></div>
 
-<!-- Intro -->
+<!-- INTRO -->
 
 <div class="intro" id="intro">
 
-<div class="tag">
-A BIRTHDAY ORIGINAL FILM
-</div>
+<div class="tag">A BIRTHDAY ORIGINAL FILM</div>
 
-<div class="title">
-Perjalanan Kita
-</div>
+<h1 class="title">A Film for Your Special Day</h1>
 
-<div class="subtitle">
-A story of love, memories, and the beautiful moments we've shared.
-</div>
+<p class="subtitle">
+A personal story captured to celebrate one meaningful birthday,
+filled with memories, laughter, and love.
+</p>
 
 <div class="name">
 For Dewi Rinjani ❤️
@@ -217,14 +193,14 @@ For Dewi Rinjani ❤️
 
 </div>
 
-<!-- Movie -->
+<!-- VIDEO -->
 
 <div class="video-section" id="videoSection">
 
-<h1>Chapter 1 — Our Story</h1>
+<h1>Chapter 1 — Perjalanan Kita</h1>
 
 <p>
-Every memory has led us to this moment.
+A Birthday Story of Love, Time, and Us
 </p>
 
 <div class="video-wrapper">
@@ -237,7 +213,7 @@ allowfullscreen>
 
 </div>
 
-<div class="actions">
+<div class="action">
 
 <button class="btn" onclick="goMemories()">
 💖 Lihat Kenangan
@@ -255,45 +231,45 @@ allowfullscreen>
 
 function startFilm(){
 
-const intro=document.getElementById('intro');
-const video=document.getElementById('videoSection');
+const intro = document.getElementById("intro");
+const video = document.getElementById("videoSection");
 
-intro.style.opacity='0';
+intro.style.opacity = "0";
 
-setTimeout(()=>{
+setTimeout(() => {
 
-intro.style.display='none';
+intro.style.display = "none";
 
-video.style.display='block';
+video.style.display = "block";
 
-setTimeout(()=>{
-video.style.opacity='1';
+setTimeout(() => {
+video.style.opacity = "1";
 },100);
 
-},700);
+},800);
 
 }
 
 function goMemories(){
 
-const fade=document.getElementById('fade');
+const fade = document.getElementById("fade");
 
-fade.style.opacity='1';
+fade.style.opacity = "1";
 
-setTimeout(()=>{
-window.location.href='memories.html';
+setTimeout(() => {
+window.location.href = "memories.html";
 },800);
 
 }
 
 function goHome(){
 
-const fade=document.getElementById('fade');
+const fade = document.getElementById("fade");
 
-fade.style.opacity='1';
+fade.style.opacity = "1";
 
-setTimeout(()=>{
-window.location.href='index.html';
+setTimeout(() => {
+window.location.href = "index.html";
 },800);
 
 }
