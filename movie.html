@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Perjalanan Kita</title>
+
+<style>
+body {
+margin: 0;
+background-color: black;
+color: white;
+font-family: Arial, sans-serif;
+}
+
+/* CINEMATIC INTRO */
+.intro {
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+
+.intro h1 {
+font-size: 40px;
+letter-spacing: 3px;
+color: red;
+}
+
+.intro p {
+color: #ccc;
+margin-top: 10px;
+}
+
+/* VIDEO SECTION */
+.video-section {
+padding: 40px;
+text-align: center;
+display: none;
+}
+
+video {
+width: 80%;
+max-width: 900px;
+border-radius: 10px;
+}
+
+/* BUTTON */
+.btn {
+margin-top: 20px;
+padding: 12px 25px;
+background: red;
+border: none;
+color: white;
+cursor: pointer;
+font-size: 16px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div class="intro" id="intro">
+<h1>BIRTHDAY ORIGINALS</h1>
+<p>A Special Film For</p>
+<h2>Dewi Rinjani</h2>
+<p style="margin-top:30px;">Perjalanan Kita</p>
+
+<button class="btn" onclick="startFilm()">▶ Start Watching</button>
+</div>
+
+<!-- VIDEO -->
+<div class="video-section" id="videoSection">
+
+<h2>Perjalanan Kita</h2>
+<p>A Birthday Story of Love, Time, and Us</p>
+
+<video controls>
+<source src="video-kamu.mp4" type="video/mp4">
+Browser kamu tidak mendukung video.
+</video>
+
+<br>
+
+<button class="btn" onclick="goMemories()">Lihat Kenangan</button>
+<button class="btn" onclick="goHome()">Kembali</button>
+
+</div>
+
+<script>
+function startFilm() {
+document.getElementById('intro').style.display = 'none';
+document.getElementById('videoSection').style.display = 'block';
+}
+
+function goMemories() {
+window.location.href = "memories.html";
+}
+
+function goHome() {
+window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
