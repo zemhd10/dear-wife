@@ -1,29 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<title>NETLOVE</title>
+<meta charset="UTF-8">
+<title>NETLOVE - Perjalanan Kita</title>
 
 <style>
-body{
-background:black;
-color:white;
-font-family:Arial;
-text-align:center;
+body {
+margin: 0;
+background-color: #000;
+color: white;
+font-family: Arial, sans-serif;
 }
 
-h1{
-font-size:60px;
-color:red;
+/* NAVBAR */
+.navbar {
+display: flex;
+justify-content: space-between;
+padding: 20px 50px;
+background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+position: fixed;
+width: 100%;
+top: 0;
 }
 
-.hero{
-margin-top:100px;
+.logo {
+color: red;
+font-size: 28px;
+font-weight: bold;
+letter-spacing: 2px;
 }
 
-button{
-padding:15px 30px;
-font-size:20px;
-cursor:pointer;
+/* HERO */
+.hero {
+height: 90vh;
+background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70');
+background-size: cover;
+background-position: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding-left: 60px;
+}
+
+.hero h1 {
+font-size: 60px;
+margin: 0;
+}
+
+.hero p {
+font-size: 20px;
+max-width: 500px;
+margin-top: 10px;
+color: #ddd;
+}
+
+.btn {
+margin-top: 20px;
+padding: 12px 25px;
+font-size: 18px;
+background: red;
+border: none;
+color: white;
+cursor: pointer;
+width: fit-content;
+}
+
+/* SECTION */
+.section {
+padding: 40px 60px;
+}
+
+.row {
+display: flex;
+gap: 15px;
+overflow-x: auto;
+}
+
+.card {
+min-width: 200px;
+height: 120px;
+background: #222;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.footer {
+text-align: center;
+padding: 40px;
+color: #aaa;
 }
 </style>
 
@@ -31,16 +97,28 @@ cursor:pointer;
 
 <body>
 
+<div class="navbar">
+<div class="logo">NETLOVE</div>
+</div>
+
 <div class="hero">
+<h1>Perjalanan Kita</h1>
+<p>Sebuah kisah tentang dua orang yang dipertemukan takdir dan memilih untuk terus bersama.</p>
+<button class="btn">▶ Tonton Sekarang</button>
+</div>
 
-<h1>NETLOVE</h1>
+<div class="section">
+<h2>Episode Kita</h2>
+<div class="row">
+<div class="card">Episode 1<br>Awal Bertemu</div>
+<div class="card">Episode 2<br>Perjalanan</div>
+<div class="card">Episode 3<br>Janji</div>
+<div class="card">Final<br>Selamanya</div>
+</div>
+</div>
 
-<h2>Perjalanan Kita</h2>
-
-<p>Sebuah kisah tentang dua orang yang memilih berjalan bersama.</p>
-
-<button>Tonton Sekarang</button>
-
+<div class="footer">
+Untuk seseorang yang selalu menjadi rumah ❤️
 </div>
 
 </body>
