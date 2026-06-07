@@ -2,14 +2,13 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>BIRTHDAY ORIGINALS - Perjalanan Kita</title>
+<title>BIRTHDAY ORIGINALS</title>
 
 <style>
 
 /* =========================
-   BASE CINEMATIC STYLE
+   BASE
 ========================= */
-
 body {
 margin: 0;
 background: radial-gradient(circle at center, #111 0%, #000 100%);
@@ -17,18 +16,12 @@ color: white;
 font-family: Arial, sans-serif;
 opacity: 0;
 animation: fadeIn 1.2s ease forwards;
-overflow-x: hidden;
-}
-
-/* TEXT GLOW */
-h1, h2 {
-text-shadow: 0 0 10px rgba(255,0,0,0.6);
+overflow: hidden;
 }
 
 /* =========================
-   LOADING SCREEN
+   LOADING
 ========================= */
-
 #loadingScreen {
 position: fixed;
 width: 100%;
@@ -50,9 +43,8 @@ text-shadow: 0 0 20px red;
 }
 
 /* =========================
-   INTRO SECTION
+   INTRO
 ========================= */
-
 .intro {
 height: 100vh;
 display: flex;
@@ -77,37 +69,12 @@ margin-top: 10px;
 .intro h1 {
 font-size: 42px;
 margin: 10px 0;
-color: white;
 }
 
 .intro h2 {
 font-size: 28px;
-color: white;
 margin-top: 10px;
 }
-
-/* =========================
-   VIDEO SECTION
-========================= */
-
-.video-section {
-padding: 40px;
-text-align: center;
-display: none;
-opacity: 0;
-transition: 1.2s ease;
-}
-
-iframe {
-width: 80%;
-max-width: 900px;
-height: 500px;
-border-radius: 10px;
-}
-
-/* =========================
-   BUTTON
-========================= */
 
 .btn {
 margin-top: 20px;
@@ -125,59 +92,76 @@ transform: scale(1.05);
 }
 
 /* =========================
-   ANIMATIONS
+   VIDEO
 ========================= */
+.video-section {
+padding: 40px;
+text-align: center;
+display: none;
+opacity: 0;
+transition: 1.2s ease;
+}
 
+iframe {
+width: 80%;
+max-width: 900px;
+height: 500px;
+border-radius: 10px;
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+.music-btn {
+position: fixed;
+bottom: 20px;
+right: 20px;
+z-index: 1000;
+}
+
+/* =========================
+   ANIMATION
+========================= */
 @keyframes fadeIn {
 to { opacity: 1; }
 }
 
 @keyframes fadeOutLoad {
-to {
-opacity: 0;
-visibility: hidden;
-}
+to { opacity: 0; visibility: hidden; }
 }
 
 </style>
-
 </head>
 
 <body>
-<audio id="bgm" autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mp3">
-</audio>
-<!-- =========================
-     LOADING SCREEN
-========================= -->
+
+<!-- 🎬 LOADING -->
 <div id="loadingScreen">
   <div class="logo">BIRTHDAY ORIGINALS</div>
 </div>
 
-<!-- =========================
-     INTRO
-========================= -->
-<div class="intro" id="intro">
+<!-- 🎵 MUSIC (CUSTOM FILE) -->
+<audio id="bgm" autoplay loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
 
+<!-- 🎞️ INTRO -->
+<div class="intro" id="intro">
 <p class="small">A BIRTHDAY ORIGINAL FILM</p>
 
 <h1>Perjalanan Kita</h1>
-
 <p class="subtitle">A story of love, time, and us</p>
 
 <h2>Dewi Rinjani</h2>
 
 <button class="btn" onclick="startFilm()">▶ Start Watching</button>
-
 </div>
 
-<!-- =========================
-     VIDEO SECTION
-========================= -->
+<!-- 🎬 VIDEO -->
 <div class="video-section" id="videoSection">
 
 <h1>Perjalanan Kita</h1>
-<p>A Birthday Story of Love, Time, and Us</p>
+<p>A Birthday Story of Love</p>
 
 <iframe 
 src="https://drive.google.com/file/d/1xCSRGZl7J3Wl0JNFsg2zxpvGWsFV9ZWE/preview"
@@ -192,9 +176,9 @@ allowfullscreen>
 
 </div>
 
-<!-- =========================
-     SCRIPT
-========================= -->
+<!-- 🔊 MUSIC CONTROL -->
+<button class="btn music-btn" onclick="toggleMusic()">🔊 Music</button>
+
 <script>
 
 function startFilm() {
@@ -217,6 +201,11 @@ window.location.href = "memories.html";
 
 function goHome() {
 window.location.href = "index.html";
+}
+
+function toggleMusic() {
+const audio = document.getElementById("bgm");
+audio.paused ? audio.play() : audio.pause();
 }
 
 </script>
