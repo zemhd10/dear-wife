@@ -2,202 +2,113 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Story</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:Arial,sans-serif;
-color:white;
-overflow:hidden;
-background:black;
-}
-
-/* BACKGROUND PHOTO */
-
-.background{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background-image:url('dewi.jpg');
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-z-index:-2;
-
-animation:zoomBackground 20s ease-in-out infinite alternate;
-}
-
-/* DARK OVERLAY */
-
-.background-overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-
-background:
-linear-gradient(
-to right,
-rgba(0,0,0,0.92) 15%,
-rgba(0,0,0,0.65) 50%,
-rgba(0,0,0,0.75) 100%
-);
-
-z-index:-1;
-}
-
-@keyframes zoomBackground{
-from{
-transform:scale(1);
-}
-to{
-transform:scale(1.08);
-}
+body {
+margin: 0;
+background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+color: white;
+font-family: Arial, sans-serif;
+overflow: hidden;
 }
 
 /* NAVBAR */
-
-.navbar{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:25px 60px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-background:linear-gradient(
-to bottom,
-rgba(0,0,0,0.85),
-transparent
-);
+.navbar {
+position: fixed;
+top: 0;
+width: 100%;
+padding: 20px 50px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
 }
 
-.logo{
-color:#E50914;
-font-size:28px;
-font-weight:bold;
-letter-spacing:3px;
-text-shadow:0 0 15px rgba(229,9,20,.6);
+.logo {
+color: red;
+font-size: 26px;
+font-weight: bold;
+letter-spacing: 2px;
 }
 
 /* HERO */
-
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding-left:80px;
-max-width:700px;
+.hero {
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding-left: 70px;
+position: relative;
 }
 
-.tag{
-font-size:12px;
-letter-spacing:4px;
-color:#bdbdbd;
-margin-bottom:15px;
+.tag {
+color: #aaa;
+letter-spacing: 3px;
+font-size: 12px;
+margin-bottom: 10px;
 }
 
-.hero h1{
-font-size:72px;
-line-height:1.05;
-margin-bottom:15px;
-text-shadow:0 0 25px rgba(0,0,0,.5);
+h1 {
+font-size: 60px;
+margin: 0;
+line-height: 1.1;
 }
 
-.subtitle{
-font-size:20px;
-line-height:1.7;
-color:#d9d9d9;
-margin-bottom:25px;
+.subtitle {
+font-size: 18px;
+color: #ccc;
+max-width: 600px;
+margin-top: 15px;
+line-height: 1.5;
 }
 
-.dedication{
-font-size:24px;
-color:#ff6b6b;
-margin-bottom:30px;
+.dedication {
+margin-top: 20px;
+font-size: 20px;
+color: #ff4d4d;
+letter-spacing: 1px;
 }
 
 /* BUTTON */
-
-.btn{
-padding:16px 32px;
-font-size:18px;
-background:#E50914;
-border:none;
-border-radius:6px;
-color:white;
-cursor:pointer;
-width:220px;
-
-transition:.3s;
+.btn {
+margin-top: 30px;
+padding: 14px 28px;
+font-size: 18px;
+background: red;
+border: none;
+color: white;
+cursor: pointer;
+width: fit-content;
+transition: 0.3s;
 }
 
-.btn:hover{
-transform:scale(1.05);
+.btn:hover {
+transform: scale(1.05);
+background: #ff1a1a;
 }
 
-/* FOOTER */
-
-.footer-note{
-position:absolute;
-bottom:40px;
-left:80px;
-font-size:14px;
-color:#9d9d9d;
-letter-spacing:1px;
+/* FOOTER TEXT */
+.footer-note {
+position: absolute;
+bottom: 40px;
+left: 70px;
+color: #888;
+font-size: 14px;
 }
 
-/* FADE */
-
-.fade{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100vh;
-background:black;
-opacity:0;
-pointer-events:none;
-transition:opacity 1s ease;
-z-index:999;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero{
-padding:30px;
-max-width:100%;
-}
-
-.hero h1{
-font-size:48px;
-}
-
-.subtitle{
-font-size:16px;
-}
-
-.footer-note{
-left:30px;
-bottom:30px;
-}
-
+/* FADE OVERLAY */
+.fade {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background: black;
+opacity: 0;
+pointer-events: none;
+transition: opacity 1s ease;
 }
 
 </style>
@@ -205,45 +116,31 @@ bottom:30px;
 
 <body>
 
-<!-- BACKGROUND -->
-<div class="background"></div>
-<div class="background-overlay"></div>
-
 <!-- NAVBAR -->
 <div class="navbar">
-<div class="logo">BIRTHDAY ORIGINALS</div>
+<div class="logo">NETFLIX</div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
 
-<div class="tag">
-A BIRTHDAY ORIGINAL FILM
-</div>
+<div class="tag">BIRTHDAY STORY</div>
 
-<h1>
-Happy Birthday,<br>
-Dewi Rinjani
-</h1>
+<h1>Her Special Day</h1>
 
 <p class="subtitle">
-A collection of memories, laughter, love,
-and beautiful moments created to celebrate
-your special day.
+A personal film documenting one special day that means everything —
+captured in memories, time, and love.
 </p>
 
-<div class="dedication">
-Made With Love ❤️
-</div>
+<div class="dedication">For My Wife, Dewi Rinjani</div>
 
-<button class="btn" onclick="playFilm()">
-▶ Begin The Story
-</button>
-
-</div>
+<button class="btn" onclick="playFilm()">▶ Play</button>
 
 <div class="footer-note">
 Press play to begin the celebration
+</div>
+
 </div>
 
 <!-- FADE -->
@@ -251,18 +148,13 @@ Press play to begin the celebration
 
 <script>
 
-function playFilm(){
-
-const fade = document.getElementById("fade");
-
-fade.style.opacity = "1";
+function playFilm() {
+const fade = document.getElementById('fade');
+fade.style.opacity = 1;
 
 setTimeout(() => {
-
 window.location.href = "movie.html";
-
-},1000);
-
+}, 1000);
 }
 
 </script>
