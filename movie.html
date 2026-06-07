@@ -16,9 +16,7 @@ animation: fadeIn 1.2s ease forwards;
 overflow: hidden;
 }
 
-/* =========================
-   LOADING SCREEN
-========================= */
+/* LOADING */
 #loadingScreen {
 position: fixed;
 width: 100%;
@@ -39,9 +37,7 @@ letter-spacing: 4px;
 text-shadow: 0 0 20px red;
 }
 
-/* =========================
-   INTRO
-========================= */
+/* INTRO */
 .intro {
 height: 100vh;
 display: flex;
@@ -88,9 +84,7 @@ transition: 0.3s;
 transform: scale(1.05);
 }
 
-/* =========================
-   VIDEO SECTION
-========================= */
+/* VIDEO */
 .video-section {
 padding: 40px;
 text-align: center;
@@ -99,16 +93,14 @@ opacity: 0;
 transition: 1.2s ease;
 }
 
-video {
+iframe {
 width: 80%;
 max-width: 900px;
+height: 500px;
 border-radius: 10px;
-box-shadow: 0 0 25px rgba(255,0,0,0.2);
 }
 
-/* =========================
-   MUSIC BUTTON
-========================= */
+/* MUSIC BUTTON */
 .music-btn {
 position: fixed;
 bottom: 20px;
@@ -116,9 +108,7 @@ right: 20px;
 z-index: 1000;
 }
 
-/* =========================
-   ANIMATION
-========================= */
+/* ANIMATION */
 @keyframes fadeIn {
 to { opacity: 1; }
 }
@@ -132,17 +122,17 @@ to { opacity: 0; visibility: hidden; }
 
 <body>
 
-<!-- 🎬 LOADING -->
+<!-- LOADING -->
 <div id="loadingScreen">
   <div class="logo">BIRTHDAY ORIGINALS</div>
 </div>
 
-<!-- 🎵 MUSIC (ONLY INTRO & MEMORIES) -->
+<!-- MUSIC (ONLY INTRO) -->
 <audio id="bgm" loop>
-  <source src="music.mp3?v=3" type="audio/mp3">
+  <source src="music.mp3?v=4" type="audio/mp3">
 </audio>
 
-<!-- 🎞️ INTRO -->
+<!-- INTRO -->
 <div class="intro" id="intro">
 
 <p class="small">A BIRTHDAY ORIGINAL FILM</p>
@@ -156,16 +146,18 @@ to { opacity: 0; visibility: hidden; }
 
 </div>
 
-<!-- 🎬 VIDEO (SILENT ONLY) -->
+<!-- VIDEO (GOOGLE DRIVE) -->
 <div class="video-section" id="videoSection">
 
 <h1>Perjalanan Kita</h1>
 <p>A Birthday Story of Love</p>
 
-<video id="mainVideo" controls autoplay muted>
-  <source src="video.mp4" type="video/mp4">
-  Browser tidak mendukung video.
-</video>
+<iframe 
+id="videoFrame"
+src="https://drive.google.com/file/d/1xCSRGZl7J3Wl0JNFsg2zxpvGWsFV9ZWE/preview"
+allow="autoplay"
+allowfullscreen>
+</iframe>
 
 <br>
 
@@ -174,7 +166,7 @@ to { opacity: 0; visibility: hidden; }
 
 </div>
 
-<!-- 🔊 MUSIC CONTROL -->
+<!-- MUSIC BUTTON -->
 <button class="btn music-btn" onclick="toggleMusic()">🔊 Music</button>
 
 <script>
@@ -185,7 +177,7 @@ document.getElementById('intro').style.opacity = '0';
 const audio = document.getElementById("bgm");
 audio.volume = 0.5;
 
-/* 🎵 PLAY MUSIC (INTRO ONLY) */
+/* 🎵 START MUSIC */
 audio.play().catch(() => {});
 
 setTimeout(() => {
@@ -199,6 +191,16 @@ document.getElementById('videoSection').style.opacity = '1';
 }, 700);
 }
 
+/* 🛑 STOP MUSIC WHEN ENTERING VIDEO */
+function stopMusic() {
+const audio = document.getElementById("bgm");
+audio.pause();
+audio.currentTime = 0;
+}
+
+/* OPTIONAL: pause music when clicking video area */
+document.getElementById?.("videoFrame");
+
 function toggleMusic() {
 const audio = document.getElementById("bgm");
 
@@ -210,10 +212,12 @@ audio.pause();
 }
 
 function goMemories() {
+stopMusic();
 window.location.href = "memories.html";
 }
 
 function goHome() {
+stopMusic();
 window.location.href = "index.html";
 }
 
