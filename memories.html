@@ -309,6 +309,82 @@ margin-top:30px;
 font-size:26px;
 color:#bbb;
 }
+
+  /* LEFT RIGHT CHAPTER */
+
+.chapter.left-side::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+90deg,
+rgba(0,0,0,.92) 10%,
+rgba(0,0,0,.65) 50%,
+rgba(0,0,0,.15) 100%
+);
+}
+
+.chapter.right-side::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+270deg,
+rgba(0,0,0,.92) 10%,
+rgba(0,0,0,.65) 50%,
+rgba(0,0,0,.15) 100%
+);
+}
+
+.left{
+margin-left:8%;
+text-align:left;
+}
+
+.right{
+margin-left:auto;
+margin-right:8%;
+text-align:right;
+}
+
+/* KEN BURNS */
+
+.chapter{
+animation:kenburns 20s ease-in-out infinite alternate;
+}
+
+@keyframes kenburns{
+from{
+background-size:100%;
+}
+to{
+background-size:110%;
+}
+}
+
+/* TIMELINE */
+
+.timeline{
+position:fixed;
+left:15px;
+top:50%;
+transform:translateY(-50%);
+z-index:999;
+opacity:.5;
+}
+
+.timeline ul{
+list-style:none;
+}
+
+.timeline li{
+margin:15px 0;
+font-size:12px;
+letter-spacing:2px;
+color:#aaa;
+}
 </style>
 </head>
 
@@ -353,10 +429,10 @@ SCROLL TO BEGIN
 
 <!-- CHAPTER 1 -->
 
-<section class="chapter fade"
-style="background-image:url('01-kenal.jpg')">
+<section class="chapter fade left-side"
+style="background-image:url('foto/01-kenal.jpg')">
 
-<div class="content">
+<div class="content left">
 
 <div class="chapter-number">
 CHAPTER 1
@@ -366,6 +442,7 @@ CHAPTER 1
 
 <p>
 Medan, 2015.
+
 Saat itu mungkin hanya sebuah pertemuan biasa.
 Tidak ada yang tahu bahwa perkenalan sederhana itu akan menjadi awal dari perjalanan panjang yang mengubah hidupku.
 </p>
@@ -376,10 +453,10 @@ Tidak ada yang tahu bahwa perkenalan sederhana itu akan menjadi awal dari perjal
 
 <!-- CHAPTER 2 -->
 
-<section class="chapter fade"
+<section class="chapter fade right-side"
 style="background-image:url('foto/02-pacaran.jpg')">
 
-<div class="content">
+<div class="content right">
 
 <div class="chapter-number">
 CHAPTER 2
@@ -389,7 +466,9 @@ CHAPTER 2
 
 <p>
 Tahun 2017 menjadi awal dari cerita yang lebih indah.
+
 Dari obrolan sederhana, perhatian kecil, hingga kebersamaan yang semakin sering tercipta.
+
 Perjalanan kita dimulai sebagai dua hati yang memilih berjalan bersama.
 </p>
 
@@ -399,10 +478,10 @@ Perjalanan kita dimulai sebagai dua hati yang memilih berjalan bersama.
 
 <!-- CHAPTER 3 -->
 
-<section class="chapter fade"
+<section class="chapter fade left-side"
 style="background-image:url('foto/03-lamaran.jpg')">
 
-<div class="content">
+<div class="content left">
 
 <div class="chapter-number">
 CHAPTER 3
@@ -412,19 +491,19 @@ CHAPTER 3
 
 <p>
 Agustus 2022 menjadi salah satu momen yang tidak akan pernah aku lupakan.
+
 Sebuah langkah yang menandai bahwa perjalanan ini tidak lagi hanya tentang hari ini, tetapi tentang masa depan yang ingin kita perjuangkan bersama.
 </p>
 
 </div>
 
 </section>
-
 <!-- CHAPTER 4 -->
 
-<section class="chapter fade"
+<<section class="chapter fade right-side"
 style="background-image:url('foto/04-menikah.jpg')">
 
-<div class="content">
+<div class="content right">
 
 <div class="chapter-number">
 CHAPTER 4
@@ -434,6 +513,7 @@ CHAPTER 4
 
 <p>
 Tahun 2024 menjadi salah satu bab terpenting dalam hidup kita.
+
 Hari ketika aku mengucapkan janji untuk berjalan bersamamu, bukan hanya untuk hari itu, tetapi untuk hari-hari setelahnya.
 </p>
 
@@ -443,10 +523,10 @@ Hari ketika aku mengucapkan janji untuk berjalan bersamamu, bukan hanya untuk ha
 
 <!-- CHAPTER 5 -->
 
-<section class="chapter fade"
+<section class="chapter fade left-side"
 style="background-image:url('foto/05-keluarga.jpg')">
 
-<div class="content">
+<div class="content left">
 
 <div class="chapter-number">
 CHAPTER 5
@@ -456,6 +536,7 @@ CHAPTER 5
 
 <p>
 Setiap hari yang kita lalui menghadirkan begitu banyak hal yang patut disyukuri.
+
 Aku berharap suatu hari nanti Allah mempercayakan kepada kita hadiah terindah berikutnya untuk melengkapi keluarga kecil yang sedang kita bangun bersama.
 </p>
 
@@ -465,10 +546,10 @@ Aku berharap suatu hari nanti Allah mempercayakan kepada kita hadiah terindah be
 
 <!-- CHAPTER 6 -->
 
-<section class="chapter fade"
+<section class="chapter fade right-side"
 style="background-image:url('foto/06-dewi.jpg')">
 
-<div class="content">
+<div class="content right">
 
 <div class="chapter-number">
 CHAPTER 6
@@ -477,9 +558,12 @@ CHAPTER 6
 <h2>What I Admire About You</h2>
 
 <p>
-Kesabaranmu. Ketulusanmu.
+Kesabaranmu.
+Ketulusanmu.
 Perhatianmu dalam hal-hal kecil.
+
 Dan caramu membuat sebuah rumah terasa benar-benar seperti rumah.
+
 Setiap hari aku bersyukur karena memilikimu sebagai istriku.
 </p>
 
@@ -521,7 +605,11 @@ Aku sangat mencintaimu lebih dari yang mampu diungkapkan oleh kata-kata.
 
 </div>
 
-  <section class="ending">
+  
+</div>
+
+</section>
+<section class="ending">
 
 <h1>
 And if I could choose again,
@@ -533,10 +621,7 @@ Every single time. ❤️
 </p>
 
 </section>
-</div>
-
-</section>
-
+  
 <script>
 window.addEventListener('load', () => {
 const audio = document.getElementById('bgm');
