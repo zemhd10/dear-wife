@@ -6,7 +6,52 @@
 <title>Our Story - Dewi Rinjani</title>
 
 <style>
+.chapter{
+height:100vh;
+position:relative;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+overflow:hidden;
+}
 
+.chapter::after{
+content:"";
+position:absolute;
+inset:0;
+background:inherit;
+background-size:cover;
+background-position:center;
+animation:kenburns 20s ease-in-out infinite alternate;
+z-index:0;
+}
+
+@keyframes kenburns{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.12);
+}
+}
+  .timeline{
+position:fixed;
+left:30px;
+top:50%;
+transform:translateY(-50%);
+z-index:999;
+}
+
+.timeline ul{
+list-style:none;
+}
+
+.timeline li{
+margin:20px 0;
+color:#999;
+font-size:14px;
+letter-spacing:2px;
+}
 *{
 margin:0;
 padding:0;
@@ -242,12 +287,41 @@ font-size:18px;
 }
 
 }
+.ending{
+height:100vh;
+background:black;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
+}
 
+.ending h1{
+font-size:60px;
+max-width:900px;
+line-height:1.4;
+}
+
+.ending p{
+margin-top:30px;
+font-size:26px;
+color:#bbb;
+}
 </style>
 </head>
 
 <body>
-
+<div class="timeline">
+<ul>
+<li>2015 • Kenal</li>
+<li>2017 • Pacaran</li>
+<li>2022 • Lamaran</li>
+<li>2024 • Menikah</li>
+<li>2026 • Birthday Story</li>
+</ul>
+</div>
 <audio id="bgm" autoplay loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -444,15 +518,38 @@ Aku sangat mencintaimu lebih dari yang mampu diungkapkan oleh kata-kata.
 </p>
 
 <div class="signature">
-❤️ Dewi Rinjani ❤️
+
 </div>
 
+  <section class="ending">
+
+<h1>
+And if I could choose again,
+I would still choose you.
+</h1>
+
+<p>
+Every single time. ❤️
+</p>
+
+</section>
 </div>
 
 </section>
 
 <script>
+window.addEventListener('load', () => {
+const audio = document.getElementById('bgm');
 
+audio.play().catch(() => {
+
+document.body.addEventListener('click', () => {
+audio.play();
+}, { once:true });
+
+});
+
+});
 const observer = new IntersectionObserver((entries)=>{
 
 entries.forEach(entry=>{
