@@ -2,51 +2,418 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Our Memories</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story</title>
 
 <style>
 
-body {
-margin: 0;
-background: black;
-color: white;
-font-family: Arial, sans-serif;
-opacity: 0;
-animation: fadeIn 1.5s ease forwards;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
-/* BLACK INTRO */
-.intro {
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-text-align: center;
+body{
+background:#000;
+color:#fff;
+font-family:Arial,sans-serif;
+overflow-x:hidden;
 }
 
-h1 {
-font-size: 40px;
+/* MUSIC BUTTON */
+
+.music-btn{
+position:fixed;
+top:20px;
+right:20px;
+z-index:9999;
+background:#e50914;
+border:none;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+cursor:pointer;
 }
 
-p {
-color: #aaa;
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+background:
+linear-gradient(
+rgba(0,0,0,.65),
+rgba(0,0,0,.75)
+),
+url("foto/07-birthday.jpg");
+
+background-size:cover;
+background-position:center;
 }
 
-/* FADE */
-@keyframes fadeIn {
-to { opacity: 1; }
+.hero h1{
+font-size:70px;
+margin-bottom:15px;
+}
+
+.hero p{
+max-width:700px;
+line-height:1.8;
+color:#ddd;
+}
+
+.scroll-down{
+margin-top:40px;
+font-size:14px;
+letter-spacing:4px;
+color:#aaa;
+}
+
+/* CHAPTER */
+
+.chapter{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:80px;
+gap:60px;
+opacity:0;
+transform:translateY(80px);
+transition:1.2s;
+}
+
+.chapter.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.chapter:nth-child(even){
+flex-direction:row-reverse;
+}
+
+.chapter img{
+width:45%;
+border-radius:12px;
+box-shadow:0 0 30px rgba(0,0,0,.5);
+}
+
+.text{
+width:55%;
+}
+
+.chapter-number{
+color:#e50914;
+font-size:14px;
+letter-spacing:4px;
+margin-bottom:10px;
+}
+
+.text h2{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.text p{
+line-height:1.9;
+color:#ddd;
+font-size:18px;
+}
+
+/* FINAL */
+
+.final{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
+background:#000;
+}
+
+.final h1{
+font-size:60px;
+margin-bottom:30px;
+}
+
+.final p{
+max-width:900px;
+line-height:2;
+font-size:20px;
+color:#ddd;
+}
+
+.heart{
+font-size:50px;
+margin-top:40px;
+color:#ff4d6d;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.chapter{
+flex-direction:column !important;
+padding:40px 25px;
+}
+
+.chapter img{
+width:100%;
+}
+
+.text{
+width:100%;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.text h2{
+font-size:32px;
+}
+
 }
 
 </style>
 </head>
-
 <body>
 
-<div class="intro">
-<h1>Our Memories</h1>
-<p>Every moment we built together</p>
+<audio id="bgm" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">
+🎵 Music
+</button>
+
+<section class="hero">
+
+<h1>Our Story</h1>
+
+<p>
+A journey written by time, strengthened by love,
+and dedicated to the most special person in my life.
+</p>
+
+<p style="margin-top:20px;">
+For Dewi Rinjani ❤️
+</p>
+
+<div class="scroll-down">
+SCROLL TO BEGIN
 </div>
+
+</section>
+
+<section class="chapter reveal">
+
+<img src="foto/01-kenal.jpg">
+
+<div class="text">
+
+<div class="chapter-number">
+CHAPTER 1
+</div>
+
+<h2>Where It All Began</h2>
+
+<p>
+Medan, 2015.
+Saat itu mungkin hanya sebuah pertemuan biasa.
+Tidak ada yang tahu bahwa perkenalan sederhana itu
+akan menjadi awal dari perjalanan panjang yang mengubah hidupku.
+</p>
+
+</div>
+
+</section>
+
+<section class="chapter reveal">
+
+<img src="foto/02-pacaran.jpg">
+
+<div class="text">
+
+<div class="chapter-number">
+CHAPTER 2
+</div>
+
+<h2>The Beginning of Us</h2>
+
+<p>
+Tahun 2017 menjadi awal dari cerita yang lebih indah.
+Dari obrolan sederhana, perhatian kecil, hingga kebersamaan
+yang semakin sering tercipta.
+Perjalanan kita dimulai sebagai dua hati yang memilih berjalan bersama.
+</p>
+
+</div>
+
+</section>
+
+<section class="chapter reveal">
+
+<img src="foto/03-lamaran.jpg">
+
+<div class="text">
+
+<div class="chapter-number">
+CHAPTER 3
+</div>
+
+<h2>The Promise Before Forever</h2>
+
+<p>
+Agustus 2022 menjadi salah satu momen yang tidak akan pernah aku lupakan.
+Sebuah langkah yang menandai bahwa perjalanan ini tidak lagi hanya tentang hari ini,
+tetapi tentang masa depan yang ingin kita perjuangkan bersama.
+</p>
+
+</div>
+
+</section>
+
+<section class="chapter reveal">
+
+<img src="foto/04-menikah.jpg">
+
+<div class="text">
+
+<div class="chapter-number">
+CHAPTER 4
+</div>
+
+<h2>The Beginning of Forever</h2>
+
+<p>
+Tahun 2024 menjadi salah satu bab terpenting dalam hidup kita.
+Hari ketika aku mengucapkan janji untuk berjalan bersamamu,
+bukan hanya untuk hari itu, tetapi untuk hari-hari setelahnya.
+</p>
+
+</div>
+
+</section>
+
+<section class="chapter reveal">
+
+<img src="foto/05-keluarga.jpg">
+
+<div class="text">
+
+<div class="chapter-number">
+CHAPTER 5
+</div>
+
+<h2>Our Little Family</h2>
+
+<p>
+Setiap hari yang kita lalui menghadirkan begitu banyak hal yang patut disyukuri.
+Aku berharap suatu hari nanti Allah mempercayakan kepada kita hadiah terindah berikutnya
+untuk melengkapi keluarga kecil yang sedang kita bangun bersama.
+</p>
+
+</div>
+
+</section>
+
+<section class="chapter reveal">
+
+<img src="foto/06-dewi.jpg">
+
+<div class="text">
+
+<div class="chapter-number">
+CHAPTER 6
+</div>
+
+<h2>What I Admire About You</h2>
+
+<p>
+Kesabaranmu. Ketulusanmu.
+Perhatianmu dalam hal-hal kecil.
+Dan caramu membuat sebuah rumah terasa benar-benar seperti rumah.
+Setiap hari aku bersyukur karena memilikimu sebagai istriku.
+</p>
+
+</div>
+
+</section>
+
+<section class="final">
+
+<h1>Happy Birthday, Istriku ❤️</h1>
+
+<p>
+Selamat ulang tahun, Istriku.<br><br>
+
+Hari ini adalah hari yang sangat istimewa bagiku,
+karena dunia pernah menghadirkan seseorang yang sangat berarti dalam hidupku.
+
+Terima kasih telah menjadi istri yang luar biasa,
+teman hidup, tempat berbagi cerita,
+serta sosok yang selalu ada untukku dalam suka maupun duka.
+
+Kehadiranmu membuat hidupku lebih lengkap,
+lebih berwarna, dan lebih bermakna.
+
+Semoga Allah senantiasa memberikan kesehatan,
+kebahagiaan, keberkahan, serta mengabulkan
+setiap doa dan harapan terbaikmu.
+
+Semoga kita segera dianugerahkan bayi lucu
+untuk melengkapi kebahagiaan keluarga kecil kita.
+
+Aku sangat mencintaimu,
+lebih dari yang mampu diungkapkan oleh kata-kata.
+</p>
+
+<div class="heart">
+❤️
+</div>
+
+</section>
+
+<script>
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+
+});
+
+},{threshold:0.2});
+
+document.querySelectorAll('.chapter').forEach(el=>{
+observer.observe(el);
+});
+
+function toggleMusic(){
+
+const audio = document.getElementById('bgm');
+
+if(audio.paused){
+audio.play();
+}else{
+audio.pause();
+}
+
+}
+
+</script>
 
 </body>
 </html>
