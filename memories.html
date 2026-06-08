@@ -296,31 +296,25 @@ color:#bbb;
   /* LEFT RIGHT CHAPTER */
 
 .chapter.left-side::before{
-content:"";
-position:absolute;
-inset:0;
 background:
 linear-gradient(
 90deg,
-rgba(0,0,0,.92) 10%,
-rgba(0,0,0,.65) 50%,
-rgba(0,0,0,.15) 100%
+rgba(0,0,0,.75) 10%,
+rgba(0,0,0,.45) 50%,
+rgba(0,0,0,.05) 100%
 );
 }
 
 .chapter.right-side::before{
-content:"";
-position:absolute;
-inset:0;
 background:
 linear-gradient(
 270deg,
-rgba(0,0,0,.92) 10%,
-rgba(0,0,0,.65) 50%,
-rgba(0,0,0,.15) 100%
+rgba(0,0,0,.75) 10%,
+rgba(0,0,0,.45) 50%,
+rgba(0,0,0,.05) 100%
 );
 }
-
+ 
 .left{
 margin-left:8%;
 text-align:left;
@@ -332,23 +326,16 @@ margin-right:8%;
 text-align:right;
 }
 
-/* KEN BURNS */
-
-.chapter{
-animation:kenburns 20s ease-in-out infinite alternate;
-}
-
-@keyframes kenburns{
-from{
-background-size:100%;
-}
-to{
-background-size:110%;
-}
-}
-
 /* TIMELINE */
+.content h2{
+text-shadow:
+0 3px 12px rgba(0,0,0,.9);
+}
 
+.content p{
+text-shadow:
+0 2px 10px rgba(0,0,0,.9);
+}
 
 </style>
 </head>
