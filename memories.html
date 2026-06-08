@@ -22,212 +22,249 @@ color:white;
 overflow-x:hidden;
 }
 
-/* =======================
-   CINEMATIC SCROLL BASE
-======================= */
-
-section{
-position:relative;
-overflow:hidden;
-}
-
-/* PARALLAX CORE */
-.parallax{
-background-attachment:fixed;
-background-size:cover;
-background-position:center;
-transform:scale(1.05);
+/* AUDIO */
+audio{
+display:none;
 }
 
 /* HERO */
 .hero{
 height:100vh;
-display:flex;
-align-items:flex-end;
-justify-content:flex-start;
-padding:80px 10%;
 background:
-linear-gradient(to top, rgba(0,0,0,.95), rgba(0,0,0,.2)),
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),
 url("foto/07-birthday.jpg");
+
 background-size:cover;
 background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
 position:relative;
 }
 
-/* HERO TEXT (BOTTOM CINEMATIC) */
 .hero-content{
 max-width:900px;
+animation:fadeIn 2s ease;
 z-index:2;
-margin-bottom:60px;
+position:relative;
 }
 
 .hero h1{
 font-size:90px;
-letter-spacing:2px;
 margin-bottom:20px;
-text-shadow:0 10px 40px rgba(0,0,0,.8);
-min-height:110px;
+text-shadow:0 0 20px rgba(0,0,0,.6);
 }
 
 .hero p{
-font-size:22px;
-color:#ddd;
+font-size:24px;
 line-height:1.8;
+color:#ddd;
 }
 
 .dedication{
-margin-top:20px;
-font-size:26px;
+margin-top:25px;
+font-size:28px;
 color:#ffb3b3;
 }
 
-/* =======================
-   CHAPTER CINEMATIC
-======================= */
-
-.chapter{
-height:100vh;
-display:flex;
-align-items:flex-end;
-padding:80px 10%;
-position:relative;
+.scroll{
+margin-top:50px;
+font-size:14px;
+letter-spacing:5px;
+color:#aaa;
 }
 
+/* CHAPTER BASE */
+.chapter{
+height:100vh;
+position:relative;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+overflow:hidden;
+z-index:0;
+}
+
+/* KENBURNS EFFECT FIXED */
+.chapter::after{
+content:"";
+position:absolute;
+inset:0;
+background:inherit;
+background-size:cover;
+background-position:center;
+animation:kenburns 20s ease-in-out infinite alternate;
+z-index:0;
+}
+
+/* DARK OVERLAY */
 .chapter::before{
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(to top,
-rgba(0,0,0,.92),
-rgba(0,0,0,.3),
-rgba(0,0,0,.2));
+background:linear-gradient(
+90deg,
+rgba(0,0,0,.90) 15%,
+rgba(0,0,0,.60) 55%,
+rgba(0,0,0,.80) 100%
+);
 z-index:1;
 }
 
-/* TEXT BLOCK BOTTOM STYLE */
+/* CONTENT FIX (INI KUNCI UTAMA TEKS HILANG) */
 .content{
 position:relative;
 z-index:2;
-max-width:850px;
-margin-bottom:40px;
-
-animation:fadeUp 1.5s ease both;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding-left:8%;
+max-width:800px;
 }
 
 .chapter-number{
 color:#E50914;
-letter-spacing:6px;
-font-size:14px;
-margin-bottom:10px;
+font-size:15px;
+letter-spacing:8px;
+margin-bottom:20px;
 }
 
 .content h2{
-font-size:58px;
-margin-bottom:20px;
-text-shadow:0 10px 30px rgba(0,0,0,.8);
+font-size:70px;
+margin-bottom:30px;
+line-height:1.05;
+text-shadow:0 3px 12px rgba(0,0,0,.9);
 }
 
 .content p{
-font-size:20px;
+font-size:24px;
 line-height:1.8;
 color:#e6e6e6;
+text-shadow:0 2px 10px rgba(0,0,0,.9);
 }
 
-/* LEFT RIGHT VARIANT (CINEMATIC EDGE POSITION) */
-.left{align-self:flex-end; text-align:left;}
-.right{align-self:flex-end; text-align:right; margin-left:auto;}
+/* LEFT RIGHT */
+.left{
+margin-left:8%;
+text-align:left;
+}
 
-/* =======================
-   FINAL CINEMATIC LETTER
-======================= */
+.right{
+margin-left:auto;
+margin-right:8%;
+text-align:right;
+}
 
+/* FINAL */
 .final{
 min-height:100vh;
-display:flex;
-align-items:flex-end;
-justify-content:center;
-padding:100px 10%;
 background:
-linear-gradient(to top, rgba(0,0,0,.95), rgba(0,0,0,.2)),
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.85)),
 url("foto/07-birthday.jpg");
+
 background-size:cover;
 background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+padding:80px 30px;
+text-align:center;
+position:relative;
 }
 
 .final-content{
 max-width:900px;
-margin-bottom:60px;
-text-align:center;
+z-index:2;
+position:relative;
 }
 
 .final h1{
-font-size:62px;
-margin-bottom:30px;
+font-size:70px;
+margin-bottom:40px;
 }
 
 .final p{
-font-size:22px;
+font-size:24px;
 line-height:2;
 color:#eee;
 }
 
-/* =======================
-   ENDING CINEMATIC
-======================= */
+.signature{
+margin-top:50px;
+font-size:32px;
+color:#ffb3b3;
+}
 
+/* ENDING */
 .ending{
 height:100vh;
+background:black;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-background:black;
 padding:40px;
 }
 
 .ending h1{
-font-size:58px;
+font-size:60px;
 max-width:900px;
 line-height:1.4;
 }
 
 .ending p{
-margin-top:20px;
-font-size:24px;
+margin-top:30px;
+font-size:26px;
 color:#bbb;
 }
 
-/* =======================
-   ANIMATION
-======================= */
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(60px);
+/* FADE FIX (BIAR TIDAK HILANG DI LOAD AWAL) */
+.fade{
+opacity:1;
+transform:translateY(0);
+transition:all 1.5s ease;
 }
-to{
+
+.fade.show{
 opacity:1;
 transform:translateY(0);
 }
+
+/* ANIMATION */
+@keyframes fadeIn{
+from{opacity:0; transform:scale(1.05);}
+to{opacity:1; transform:scale(1);}
 }
 
-/* =======================
-   MOBILE
-======================= */
+@keyframes kenburns{
+from{transform:scale(1);}
+to{transform:scale(1.12);}
+}
 
+/* MOBILE */
 @media(max-width:900px){
 
-.hero h1{font-size:48px;}
-.content h2{font-size:38px;}
-.final h1{font-size:38px;}
-.ending h1{font-size:34px;}
+.hero h1{font-size:52px;}
+.hero p{font-size:18px;}
 
+.content{
+padding:40px;
+max-width:100%;
 }
 
-/* AUDIO */
-audio{display:none;}
+.content h2{font-size:42px;}
+.content p{font-size:18px;}
+
+.final h1{font-size:46px;}
+.final p{font-size:18px;}
+}
 
 </style>
 </head>
@@ -239,68 +276,87 @@ audio{display:none;}
 </audio>
 
 <!-- HERO -->
-<section class="hero parallax">
-
+<section class="hero">
 <div class="hero-content">
-<h1 id="typing"></h1>
-
-<p>
-A journey through the memories, moments,
-and milestones that shaped our story.
-</p>
+<h1>Our Story</h1>
+<p>A journey through the memories, moments,
+and milestones that shaped our story.</p>
 
 <div class="dedication">For Dewi Rinjani ❤️</div>
+<div class="scroll">SCROLL TO BEGIN</div>
 </div>
-
 </section>
 
-<!-- CHAPTERS -->
-<section class="chapter parallax" style="background-image:url('01-kenal.jpg')">
+<!-- CHAPTER 1 -->
+<section class="chapter fade left-side"
+style="background-image:url('01-kenal.jpg')">
+
 <div class="content left">
 <div class="chapter-number">CHAPTER 1</div>
 <h2>Where It All Began</h2>
-<p>September 2015. Awalnya kita hanyalah dua mahasiswa...</p>
+<p>September 2015. Awalnya kita hanyalah dua mahasiswa yang berada di kelas yang sama. Tidak ada cerita yang istimewa saat itu, hanya perkenalan sederhana yang kemudian menjadi awal dari banyak kenangan di tahun-tahun berikutnya.</p>
 </div>
+
 </section>
 
-<section class="chapter parallax" style="background-image:url('02-pacaran.jpg')">
+<!-- CHAPTER 2 -->
+<section class="chapter fade right-side"
+style="background-image:url('02-pacaran.jpg')">
+
 <div class="content right">
 <div class="chapter-number">CHAPTER 2</div>
 <h2>The Beginning of Us</h2>
-<p>Tahun 2017 menjadi awal ketika kita memutuskan...</p>
+<p>Tahun 2017 menjadi awal ketika kita memutuskan untuk melangkah lebih jauh dari sekedar teman. Sejak saat itu, banyak hal kita lalui bersama.</p>
 </div>
+
 </section>
 
-<section class="chapter parallax" style="background-image:url('03-lamaran.jpg')">
+<!-- CHAPTER 3 -->
+<section class="chapter fade left-side"
+style="background-image:url('03-lamaran.jpg')">
+
 <div class="content left">
 <div class="chapter-number">CHAPTER 3</div>
 <h2>The Promise Before Forever</h2>
-<p>Agustus 2022 menjadi salah satu momen penting...</p>
+<p>Agustus 2022 menjadi salah satu momen penting dalam perjalanan kita.</p>
 </div>
+
 </section>
 
-<section class="chapter parallax" style="background-image:url('04-menikah.jpg')">
+<!-- CHAPTER 4 -->
+<section class="chapter fade right-side"
+style="background-image:url('04-menikah.jpg')">
+
 <div class="content right">
 <div class="chapter-number">CHAPTER 4</div>
 <h2>The Beginning of Forever</h2>
-<p>Tahun 2024 menjadi salah satu momen terpenting...</p>
+<p>Tahun 2024 menjadi salah satu momen terpenting dalam perjalanan kita.</p>
 </div>
+
 </section>
 
-<section class="chapter parallax" style="background-image:url('05-keluarga.jpg')">
+<!-- CHAPTER 5 -->
+<section class="chapter fade left-side"
+style="background-image:url('05-keluarga.jpg')">
+
 <div class="content left">
 <div class="chapter-number">CHAPTER 5</div>
 <h2>Our Little Family</h2>
-<p>Setelah menikah, kita mulai menjalani kehidupan...</p>
+<p>Setelah menikah, kita mulai menjalani kehidupan bersama.</p>
 </div>
+
 </section>
 
-<section class="chapter parallax" style="background-image:url('06-dewi.jpg')">
+<!-- CHAPTER 6 -->
+<section class="chapter fade right-side"
+style="background-image:url('06-dewi.jpg')">
+
 <div class="content right">
 <div class="chapter-number">CHAPTER 6</div>
 <h2>What I Admire About You</h2>
-<p>Aku mengagumi banyak hal tentang dirimu...</p>
+<p>Aku mengagumi banyak hal tentang dirimu.</p>
 </div>
+
 </section>
 
 <!-- FINAL -->
@@ -310,10 +366,12 @@ and milestones that shaped our story.
 <h1>Selamat ulang tahun, Istriku ❤️</h1>
 
 <p>
-Hari ini adalah hari yang sangat istimewa...
+Hari ini adalah hari yang sangat istimewa bagiku...
 <br><br>
-Aku sangat mencintaimu lebih dari kata-kata.
+Aku sangat mencintaimu lebih dari yang mampu diungkapkan oleh kata-kata.
 </p>
+
+<div class="signature"></div>
 
 </div>
 </section>
@@ -325,27 +383,6 @@ Aku sangat mencintaimu lebih dari kata-kata.
 </section>
 
 <script>
-
-/* =======================
-   TYPEWRITER EFFECT
-======================= */
-
-const text = "Our Story";
-let i = 0;
-
-function typeWriter(){
-if(i < text.length){
-document.getElementById("typing").innerHTML += text.charAt(i);
-i++;
-setTimeout(typeWriter, 120);
-}
-}
-typeWriter();
-
-/* =======================
-   AUDIO AUTOPLAY FIX
-======================= */
-
 window.addEventListener('load', () => {
 const audio = document.getElementById('bgm');
 
@@ -356,6 +393,17 @@ audio.play();
 });
 });
 
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:0.2});
+
+document.querySelectorAll('.fade').forEach(el=>{
+observer.observe(el);
+});
 </script>
 
 </body>
