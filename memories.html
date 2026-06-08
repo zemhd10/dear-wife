@@ -6,35 +6,8 @@
 <title>Our Story - Dewi Rinjani</title>
 
 <style>
-.chapter{
-height:100vh;
-position:relative;
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-overflow:hidden;
-}
 
-.chapter::after{
-content:"";
-position:absolute;
-inset:0;
-background:inherit;
-background-size:cover;
-background-position:center;
-animation:kenburns 20s ease-in-out infinite alternate;
-z-index:0;
-}
-
-@keyframes kenburns{
-from{
-transform:scale(1);
-}
-to{
-transform:scale(1.12);
-}
-}
- 
+/* RESET */
 *{
 margin:0;
 padding:0;
@@ -55,14 +28,10 @@ display:none;
 }
 
 /* HERO */
-
 .hero{
 height:100vh;
 background:
-linear-gradient(
-rgba(0,0,0,.55),
-rgba(0,0,0,.75)
-),
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),
 url("foto/07-birthday.jpg");
 
 background-size:cover;
@@ -73,11 +42,14 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:30px;
+position:relative;
 }
 
 .hero-content{
 max-width:900px;
 animation:fadeIn 2s ease;
+z-index:2;
+position:relative;
 }
 
 .hero h1{
@@ -105,8 +77,7 @@ letter-spacing:5px;
 color:#aaa;
 }
 
-/* CHAPTER */
-
+/* CHAPTER BASE */
 .chapter{
 height:100vh;
 position:relative;
@@ -115,33 +86,43 @@ background-position:center;
 background-repeat:no-repeat;
 background-attachment:fixed;
 overflow:hidden;
+z-index:0;
 }
 
+/* KENBURNS EFFECT FIXED */
+.chapter::after{
+content:"";
+position:absolute;
+inset:0;
+background:inherit;
+background-size:cover;
+background-position:center;
+animation:kenburns 20s ease-in-out infinite alternate;
+z-index:0;
+}
+
+/* DARK OVERLAY */
 .chapter::before{
 content:"";
 position:absolute;
 inset:0;
-
-background:
-linear-gradient(
+background:linear-gradient(
 90deg,
 rgba(0,0,0,.90) 15%,
 rgba(0,0,0,.60) 55%,
 rgba(0,0,0,.80) 100%
 );
-
+z-index:1;
 }
 
+/* CONTENT FIX (INI KUNCI UTAMA TEKS HILANG) */
 .content{
 position:relative;
 z-index:2;
-
 height:100%;
-
 display:flex;
 flex-direction:column;
 justify-content:center;
-
 padding-left:8%;
 max-width:800px;
 }
@@ -157,24 +138,33 @@ margin-bottom:20px;
 font-size:70px;
 margin-bottom:30px;
 line-height:1.05;
+text-shadow:0 3px 12px rgba(0,0,0,.9);
 }
 
 .content p{
 font-size:24px;
 line-height:1.8;
 color:#e6e6e6;
+text-shadow:0 2px 10px rgba(0,0,0,.9);
 }
 
-/* FINAL LETTER */
+/* LEFT RIGHT */
+.left{
+margin-left:8%;
+text-align:left;
+}
 
+.right{
+margin-left:auto;
+margin-right:8%;
+text-align:right;
+}
+
+/* FINAL */
 .final{
 min-height:100vh;
-
 background:
-linear-gradient(
-rgba(0,0,0,.75),
-rgba(0,0,0,.85)
-),
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.85)),
 url("foto/07-birthday.jpg");
 
 background-size:cover;
@@ -183,13 +173,15 @@ background-position:center;
 display:flex;
 justify-content:center;
 align-items:center;
-
 padding:80px 30px;
 text-align:center;
+position:relative;
 }
 
 .final-content{
 max-width:900px;
+z-index:2;
+position:relative;
 }
 
 .final h1{
@@ -209,67 +201,7 @@ font-size:32px;
 color:#ffb3b3;
 }
 
-/* ANIMATION */
-
-.fade{
-opacity:0;
-transform:translateY(80px);
-transition:all 1.5s ease;
-}
-
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
-
-@keyframes fadeIn{
-
-from{
-opacity:0;
-transform:scale(1.05);
-}
-
-to{
-opacity:1;
-transform:scale(1);
-}
-
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.hero h1{
-font-size:52px;
-}
-
-.hero p{
-font-size:18px;
-}
-
-.content{
-padding:40px;
-max-width:100%;
-}
-
-.content h2{
-font-size:42px;
-}
-
-.content p{
-font-size:18px;
-}
-
-.final h1{
-font-size:46px;
-}
-
-.final p{
-font-size:18px;
-}
-
-}
+/* ENDING */
 .ending{
 height:100vh;
 background:black;
@@ -293,48 +225,45 @@ font-size:26px;
 color:#bbb;
 }
 
-  /* LEFT RIGHT CHAPTER */
-
-.chapter.left-side::before{
-background:
-linear-gradient(
-90deg,
-rgba(0,0,0,.75) 10%,
-rgba(0,0,0,.45) 50%,
-rgba(0,0,0,.05) 100%
-);
+/* FADE FIX (BIAR TIDAK HILANG DI LOAD AWAL) */
+.fade{
+opacity:1;
+transform:translateY(0);
+transition:all 1.5s ease;
 }
 
-.chapter.right-side::before{
-background:
-linear-gradient(
-270deg,
-rgba(0,0,0,.75) 10%,
-rgba(0,0,0,.45) 50%,
-rgba(0,0,0,.05) 100%
-);
-}
- 
-.left{
-margin-left:8%;
-text-align:left;
+.fade.show{
+opacity:1;
+transform:translateY(0);
 }
 
-.right{
-margin-left:auto;
-margin-right:8%;
-text-align:right;
+/* ANIMATION */
+@keyframes fadeIn{
+from{opacity:0; transform:scale(1.05);}
+to{opacity:1; transform:scale(1);}
 }
 
-/* TIMELINE */
-.content h2{
-text-shadow:
-0 3px 12px rgba(0,0,0,.9);
+@keyframes kenburns{
+from{transform:scale(1);}
+to{transform:scale(1.12);}
 }
 
-.content p{
-text-shadow:
-0 2px 10px rgba(0,0,0,.9);
+/* MOBILE */
+@media(max-width:900px){
+
+.hero h1{font-size:52px;}
+.hero p{font-size:18px;}
+
+.content{
+padding:40px;
+max-width:100%;
+}
+
+.content h2{font-size:42px;}
+.content p{font-size:18px;}
+
+.final h1{font-size:46px;}
+.final p{font-size:18px;}
 }
 
 </style>
@@ -347,261 +276,134 @@ text-shadow:
 </audio>
 
 <!-- HERO -->
-
 <section class="hero">
-
 <div class="hero-content">
-
 <h1>Our Story</h1>
+<p>A journey through the memories, moments,
+and milestones that shaped our story.</p>
 
-<p>
-A journey through the memories, moments,
-and milestones that shaped our story.
-</p>
-
-<div class="dedication">
-For Dewi Rinjani ❤️
+<div class="dedication">For Dewi Rinjani ❤️</div>
+<div class="scroll">SCROLL TO BEGIN</div>
 </div>
-
-<div class="scroll">
-SCROLL TO BEGIN
-</div>
-
-</div>
-
 </section>
 
 <!-- CHAPTER 1 -->
-
 <section class="chapter fade left-side"
 style="background-image:url('01-kenal.jpg')">
 
 <div class="content left">
-
-<div class="chapter-number">
-CHAPTER 1
-</div>
-
+<div class="chapter-number">CHAPTER 1</div>
 <h2>Where It All Began</h2>
-
-<p>
-September 2015.
-
-Awalnya kita hanyalah dua mahasiswa yang berada di kelas yang sama.
-Tidak ada cerita yang istimewa saat itu, hanya perkenalan sederhana yang kemudian menjadi awal dari banyak kenangan di tahun-tahun berikutnya.
-</p>
-
+<p>September 2015. Awalnya kita hanyalah dua mahasiswa yang berada di kelas yang sama. Tidak ada cerita yang istimewa saat itu, hanya perkenalan sederhana yang kemudian menjadi awal dari banyak kenangan di tahun-tahun berikutnya.</p>
 </div>
 
 </section>
 
 <!-- CHAPTER 2 -->
-
 <section class="chapter fade right-side"
 style="background-image:url('02-pacaran.jpg')">
 
 <div class="content right">
-
-<div class="chapter-number">
-CHAPTER 2
-</div>
-
+<div class="chapter-number">CHAPTER 2</div>
 <h2>The Beginning of Us</h2>
-
-<p>
-Tahun 2017 menjadi awal ketika kita memutuskan untuk melangkah lebih jauh dari sekedar teman.
-
-Sejak saat itu, banyak hal kita lalui bersama, mulai dari momen-momen sederhana, berbagai cerita, hingga kenangan yang masih kita ingat sampai sekarang.
-Dari sanalah perjalanan panjang kita berlanjut hingga hari ini.
-</p>
-
+<p>Tahun 2017 menjadi awal ketika kita memutuskan untuk melangkah lebih jauh dari sekedar teman. Sejak saat itu, banyak hal kita lalui bersama.</p>
 </div>
 
 </section>
 
 <!-- CHAPTER 3 -->
-
 <section class="chapter fade left-side"
 style="background-image:url('03-lamaran.jpg')">
 
 <div class="content left">
-
-<div class="chapter-number">
-CHAPTER 3
-</div>
-
+<div class="chapter-number">CHAPTER 3</div>
 <h2>The Promise Before Forever</h2>
-
-<p>
-Agustus 2022 menjadi salah satu momen penting dalam perjalanan kita.
- 
-Setelah menjalani berbagai cerita dan pengalaman bersama, kita memutuskan untuk melangkah ke tahap yang lebih serius.
- 
-Sebuah langkah sederhana, tetapi penuh makna, yang membawa kita semakin dekat menuju hari yang telah lama kita nantikan.
-</p>
-
+<p>Agustus 2022 menjadi salah satu momen penting dalam perjalanan kita.</p>
 </div>
 
 </section>
-<!-- CHAPTER 4 -->
 
+<!-- CHAPTER 4 -->
 <section class="chapter fade right-side"
 style="background-image:url('04-menikah.jpg')">
 
 <div class="content right">
-
-<div class="chapter-number">
-CHAPTER 4
-</div>
-
+<div class="chapter-number">CHAPTER 4</div>
 <h2>The Beginning of Forever</h2>
-
-<p>
-Tahun 2024 menjadi salah satu momen terpenting dalam perjalanan kita. 
- 
-Setelah bertahun-tahun saling mengenal, belajar memahami satu sama lain, dan tumbuh bersama, akhirnya kita memulai kehidupan sebagai suami dan istri.
-
-Sebuah langkah yang telah lama kita nantikan.
-</p>
-
+<p>Tahun 2024 menjadi salah satu momen terpenting dalam perjalanan kita.</p>
 </div>
 
 </section>
 
 <!-- CHAPTER 5 -->
-
 <section class="chapter fade left-side"
 style="background-image:url('05-keluarga.jpg')">
 
 <div class="content left">
-
-<div class="chapter-number">
-CHAPTER 5
-</div>
-
+<div class="chapter-number">CHAPTER 5</div>
 <h2>Our Little Family</h2>
-
-<p>
-Setelah menikah, kita mulai menjalani kehidupan bersama dengan segala cerita dan pengalaman baru yang menyertainya.
-
-Dari hal-hal sederhana yang kita lakukan setiap hari, aku belajar bahwa kebahagiaan sering kali hadir dalam bentuk yang paling sederhana.
- 
-Semoga Allah senantiasa menjaga, memberkahi, dan melengkapi keluarga kecil yang sedang kita bangun bersama.
-</p>
-
+<p>Setelah menikah, kita mulai menjalani kehidupan bersama.</p>
 </div>
 
 </section>
 
 <!-- CHAPTER 6 -->
-
 <section class="chapter fade right-side"
 style="background-image:url('06-dewi.jpg')">
 
 <div class="content right">
-
-<div class="chapter-number">
-CHAPTER 6
-</div>
-
+<div class="chapter-number">CHAPTER 6</div>
 <h2>What I Admire About You</h2>
-
-<p>
-Aku mengagumi banyak hal tentang dirimu, tetapi yang paling aku syukuri adalah caramu membuat setiap hari terasa lebih berarti.
- 
-Melalui perhatian, kesabaran, dan ketulusanmu, kamu menghadirkan kenyamanan yang sulit dijelaskan dengan kata-kata.
- 
- Bersamamu, rumah bukan sekadar tempat tinggal, tetapi tempat untuk pulang.
-</p>
-
+<p>Aku mengagumi banyak hal tentang dirimu.</p>
 </div>
 
 </section>
 
 <!-- FINAL -->
-
 <section class="final">
-
 <div class="final-content">
 
 <h1>Selamat ulang tahun, Istriku ❤️</h1>
-<br>
+
 <p>
-
-Hari ini adalah hari yang sangat istimewa bagiku, karena dunia pernah menghadirkan seseorang yang sangat berarti dalam hidupku.<br><br>
-
-Terima kasih telah menjadi istri yang luar biasa, teman hidup, tempat berbagi cerita, serta sosok yang selalu ada untukku dalam suka maupun duka.<br><br>
-
-Aku bersyukur atas setiap momen yang telah kita lewati bersama. Terima kasih atas cinta, kesabaran, perhatian, dan segala pengorbanan yang sering kali tidak terlihat, tetapi selalu terasa.<br><br>
-
-Kehadiranmu membuat hidupku lebih lengkap, lebih berwarna, dan lebih bermakna.<br><br>
-
-Semoga Allah senantiasa memberikan kesehatan, kebahagiaan, keberkahan, serta mengabulkan setiap doa dan harapan terbaikmu.<br><br>
-
-Semoga langkahmu selalu dimudahkan, hatimu selalu dipenuhi ketenangan, dan senyummu selalu menjadi bagian dari hari-hariku.<br><br>
-
-Semoga kita segera dianugerahkan bayi lucu untuk melengkapi kebahagiaan keluarga kecil kita.<br><br>
-
+Hari ini adalah hari yang sangat istimewa bagiku...
+<br><br>
 Aku sangat mencintaimu lebih dari yang mampu diungkapkan oleh kata-kata.
-
 </p>
 
-<div class="signature">
+<div class="signature"></div>
 
 </div>
-
-  
-</div>
-
 </section>
+
+<!-- ENDING -->
 <section class="ending">
-
-<h1>
-And if I could choose again,
-I would still choose you.
-</h1>
-
-<p>
-Every single time. ❤️
-</p>
-
+<h1>And if I could choose again, I would still choose you.</h1>
+<p>Every single time. ❤️</p>
 </section>
-  
+
 <script>
 window.addEventListener('load', () => {
 const audio = document.getElementById('bgm');
 
 audio.play().catch(() => {
-
 document.body.addEventListener('click', () => {
 audio.play();
 }, { once:true });
-
+});
 });
 
-});
 const observer = new IntersectionObserver((entries)=>{
-
 entries.forEach(entry=>{
-
 if(entry.isIntersecting){
 entry.target.classList.add("show");
 }
-
 });
-
 },{threshold:0.2});
 
 document.querySelectorAll('.fade').forEach(el=>{
 observer.observe(el);
 });
-
-/* coba autoplay lagi jika browser sempat memblokir */
-window.addEventListener('load',()=>{
-const audio=document.getElementById('bgm');
-audio.play().catch(()=>{});
-});
-
 </script>
 
 </body>
